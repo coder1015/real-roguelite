@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dj72kodcjg428" path="res://Scenes/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://csxlrah1lmcc6" path="res://Scenes/player.tscn" id="1_r150o"]
+[ext_resource type="PackedScene" uid="uid://bfvh8iffvbjc" path="res://Scenes/hud.tscn" id="3_kln2b"]
 
 [node name="Main" type="Node" unique_id=2073461120]
 script = ExtResource("1_idj7w")
@@ -11,3 +12,5 @@ position = Vector2(-1, -1)
 
 [node name="StartPosition" type="Marker2D" parent="." unique_id=940808361]
 position = Vector2(318, 178)
+
+[node name="HUD" parent="." unique_id=583667797 instance=ExtResource("3_kln2b")]
