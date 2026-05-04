@@ -1,7 +1,96 @@
 [gd_scene format=3 uid="uid://c17x43ejgkh2e"]
 
+[ext_resource type="Script" uid="uid://b87yaqmrhqjnr" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://cmc8grofry5di" path="res://Assets/art/zombiewalk.png" id="2_afpow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
+atlas = ExtResource("2_afpow")
+region = Rect2(0, 0, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
+atlas = ExtResource("2_afpow")
+region = Rect2(992, 0, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghaa6"]
+atlas = ExtResource("2_afpow")
+region = Rect2(1984, 0, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dp5w"]
+atlas = ExtResource("2_afpow")
+region = Rect2(0, 992, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwsv"]
+atlas = ExtResource("2_afpow")
+region = Rect2(992, 992, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uf12"]
+atlas = ExtResource("2_afpow")
+region = Rect2(1984, 992, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po0sg"]
+atlas = ExtResource("2_afpow")
+region = Rect2(0, 1984, 992, 992)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_haro7"]
+atlas = ExtResource("2_afpow")
+region = Rect2(992, 1984, 992, 992)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_56vhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_287tu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0830c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghaa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dp5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uf12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po0sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haro7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ta2yt"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 16.666666
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1191545895]
+scale = Vector2(0.06, 0.06)
+script = ExtResource("1_1f0kj")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1368368060]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=565102448]
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_56vhr")
+animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1322016243]
+[node name="detection_area" type="Area2D" parent="." unique_id=1963384033]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=996963332]
+shape = SubResource("CircleShape2D_ta2yt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1272619350]
+shape = SubResource("CircleShape2D_1f0kj")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
