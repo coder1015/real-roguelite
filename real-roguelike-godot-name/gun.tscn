@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://d4fpjul4vom2n"]
-
-[node name="Gun" type="Node2D" unique_id=317674117]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1558953562]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://05vjwaxdj1tf" path="res://Scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight walking sprite sheet.png" id="2_onrkg"]
+[ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/gun.tscn" id="3_6t5aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("2_onrkg")
@@ -77,7 +78,7 @@ script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=481167004]
-scale = Vector2(0.125, 0.125)
+scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"walk"
 
@@ -87,3 +88,5 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cvnsp")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1884077703]
+
+[node name="Gun" parent="." unique_id=317674117 instance=ExtResource("3_6t5aa")]

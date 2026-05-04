@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhjnwcoww4sq6"]
 
 [ext_resource type="Texture2D" uid="uid://k66sm1sjuv0o" path="res://Assets/art/projectile.png" id="1_f8cdk"]
+[ext_resource type="Script" uid="uid://bblncljfrkkht" path="res://Scripts/projectile.gd" id="1_yr2qt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yr2qt"]
 atlas = ExtResource("1_f8cdk")
@@ -42,11 +43,17 @@ animations = [{
 radius = 16.03122
 
 [node name="Projectile" type="Area2D" unique_id=919965382]
+script = ExtResource("1_yr2qt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618914462]
 sprite_frames = SubResource("SpriteFrames_cgh1o")
 animation = &"funnyface"
-frame_progress = 0.8963432
+frame_progress = 0.5344852
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1984457657]
 shape = SubResource("CircleShape2D_cu5m1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1269271627]
+rect = Rect2(-98, -97, 198, 190)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
