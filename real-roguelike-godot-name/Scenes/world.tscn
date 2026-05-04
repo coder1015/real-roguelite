@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://fnaeqtcw6krn"]
+
+[sub_resource type="TileSet" id="TileSet_tlwt5"]
+
+[node name="World" type="TileMapLayer" unique_id=785014872]
+position = Vector2(0, 1)
+tile_set = SubResource("TileSet_tlwt5")
