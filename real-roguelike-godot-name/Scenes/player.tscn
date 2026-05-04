@@ -63,17 +63,24 @@ animations = [{
 "texture": SubResource("AtlasTexture_n7ghd")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 8.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
+radius = 34.0
+height = 94.0
 
 [node name="Player" type="CharacterBody2D" unique_id=627700811]
 script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=481167004]
+scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1566271148]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=234735285]
+position = Vector2(0, -4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cvnsp")
