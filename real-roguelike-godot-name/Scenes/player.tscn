@@ -72,6 +72,7 @@ radius = 34.0
 height = 94.0
 
 [node name="Player" type="CharacterBody2D" unique_id=627700811]
+motion_mode = 1
 script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
 
@@ -84,3 +85,5 @@ animation = &"walk"
 position = Vector2(0, -4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cvnsp")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1884077703]

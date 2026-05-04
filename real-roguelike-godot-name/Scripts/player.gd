@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-
-var speed = 300.0
+# speed is in pixels per second
+var speed = 100
 var screen_size
 
 
@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -39,8 +39,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.flip_v = velocity.y < 0
 		$AnimatedSprite2D.rotation = 0
 	
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
 	move_and_slide()
 	
 	
