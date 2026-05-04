@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnlxbr0ogrg14"
-path="res://.godot/imported/Test knight.png-dc0a68b3927de1a8a82a3a16c9ed0b92.ctex"
+uid="uid://b16l53fxhk8gu"
+path="res://.godot/imported/Lazer gun.png-10135c44c7d62597a5c49c2c0b73fe75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/Test knight.png"
-dest_files=["res://.godot/imported/Test knight.png-dc0a68b3927de1a8a82a3a16c9ed0b92.ctex"]
+source_file="res://Assets/art/Gun/Lazer gun.png"
+dest_files=["res://.godot/imported/Lazer gun.png-10135c44c7d62597a5c49c2c0b73fe75.ctex"]
 
 [params]
 
