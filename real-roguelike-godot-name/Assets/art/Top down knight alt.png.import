@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv51xur8fnqiu"
-path="res://.godot/imported/icon.svg-79cac37f1f6cfc14b0eb30858c3a4b03.ctex"
+uid="uid://dncv4duar5rpr"
+path="res://.godot/imported/Top down knight alt.png-5d9f1a387bd0d8d3b40b1344ccc554eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ArtAssets/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-79cac37f1f6cfc14b0eb30858c3a4b03.ctex"]
+source_file="res://Assets/art/Top down knight alt.png"
+dest_files=["res://.godot/imported/Top down knight alt.png-5d9f1a387bd0d8d3b40b1344ccc554eb.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

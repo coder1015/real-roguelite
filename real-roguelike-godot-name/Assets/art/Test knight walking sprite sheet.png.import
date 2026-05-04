@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhqdh1n5gpmq7"
-path="res://.godot/imported/Top down knight.png-fec5f63a2e6494d1f54137e405514aad.ctex"
+uid="uid://cvbbsapode1sk"
+path="res://.godot/imported/Test knight walking sprite sheet.png-abd3c603d440e8ead03a342cdad1cf83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Top down knight.png"
-dest_files=["res://.godot/imported/Top down knight.png-fec5f63a2e6494d1f54137e405514aad.ctex"]
+source_file="res://Assets/art/Test knight walking sprite sheet.png"
+dest_files=["res://.godot/imported/Test knight walking sprite sheet.png-abd3c603d440e8ead03a342cdad1cf83.ctex"]
 
 [params]
 

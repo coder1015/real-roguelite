@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dncv4duar5rpr"
-path="res://.godot/imported/Top down knight alt.png-a741fe569df125754c05aea4c14af862.ctex"
+uid="uid://ddrtpjfv0lkbf"
+path="res://.godot/imported/Top down knight alt 2.png-211638f3e0a38806dcd62cc17d6da46c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Top down knight alt.png"
-dest_files=["res://.godot/imported/Top down knight alt.png-a741fe569df125754c05aea4c14af862.ctex"]
+source_file="res://Assets/art/Top down knight alt 2.png"
+dest_files=["res://.godot/imported/Top down knight alt 2.png-211638f3e0a38806dcd62cc17d6da46c.ctex"]
 
 [params]
 
