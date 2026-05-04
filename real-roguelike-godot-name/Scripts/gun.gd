@@ -7,10 +7,10 @@ const PROJECTILE = preload("res://Scenes/projectile.tscn")
 func _process(delta: float):
 	look_at(get_global_mouse_position())
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
-	if rotation_degrees > 90 and rotation_degrees < 270:
-		scale.y = -1
-	else:
-		scale.y = 1
+	#if rotation_degrees > 90 and rotation_degrees < 270:
+		#scale.y = -1
+	#else:
+		#scale.y = 1
 	
 	if Input.is_action_just_pressed("shoot_projectile"):
 		var projectile_instance = PROJECTILE.instantiate()

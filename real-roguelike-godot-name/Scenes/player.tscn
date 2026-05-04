@@ -1,38 +1,38 @@
 [gd_scene format=3 uid="uid://csxlrah1lmcc6"]
 
 [ext_resource type="Script" uid="uid://05vjwaxdj1tf" path="res://Scripts/player.gd" id="1_4flbx"]
-[ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight walking sprite sheet.png" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight/Test knight walking sprite sheet.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/gun.tscn" id="3_6t5aa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(1984, 0, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(0, 992, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(992, 992, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(1984, 992, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(0, 1984, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(992, 1984, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(0, 0, 992, 992)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
 atlas = ExtResource("2_onrkg")
 region = Rect2(992, 0, 992, 992)
 
@@ -40,28 +40,28 @@ region = Rect2(992, 0, 992, 992)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i3pqv")
+"texture": SubResource("AtlasTexture_6t5aa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hqtel")
+"texture": SubResource("AtlasTexture_vgqql")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sweqy")
+"texture": SubResource("AtlasTexture_fkybt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2hs0m")
+"texture": SubResource("AtlasTexture_x3wgy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jxqw")
+"texture": SubResource("AtlasTexture_3smsa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dw050")
+"texture": SubResource("AtlasTexture_8erm5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b26j0")
+"texture": SubResource("AtlasTexture_f1ek2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ghd")
+"texture": SubResource("AtlasTexture_tx1dd")
 }],
 "loop": true,
 "name": &"walk",
