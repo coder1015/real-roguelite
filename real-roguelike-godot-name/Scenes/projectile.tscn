@@ -1,7 +1,52 @@
 [gd_scene format=3 uid="uid://dhjnwcoww4sq6"]
 
+[ext_resource type="Texture2D" uid="uid://k66sm1sjuv0o" path="res://Assets/art/projectile.png" id="1_f8cdk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr2qt"]
+atlas = ExtResource("1_f8cdk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl4hk"]
+atlas = ExtResource("1_f8cdk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4467"]
+atlas = ExtResource("1_f8cdk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1077"]
+atlas = ExtResource("1_f8cdk")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgh1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr2qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tl4hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4467")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1077")
+}],
+"loop": true,
+"name": &"funnyface",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cu5m1"]
+radius = 16.03122
+
 [node name="Projectile" type="Area2D" unique_id=919965382]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618914462]
+sprite_frames = SubResource("SpriteFrames_cgh1o")
+animation = &"funnyface"
+frame_progress = 0.8963432
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1984457657]
+shape = SubResource("CircleShape2D_cu5m1")
