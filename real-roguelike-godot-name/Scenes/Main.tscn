@@ -3,16 +3,15 @@
 [ext_resource type="Script" uid="uid://dj72kodcjg428" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://csxlrah1lmcc6" path="res://Scenes/player.tscn" id="1_r150o"]
 [ext_resource type="PackedScene" uid="uid://bfvh8iffvbjc" path="res://Scenes/hud.tscn" id="3_kln2b"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://c17x43ejgkh2e" path="res://Scenes/enemy.tscn" id="4_rgh2o"]
-=======
-[ext_resource type="PackedScene" uid="uid://fnaeqtcw6krn" path="res://Scenes/world.tscn" id="4_rgh2o"]
->>>>>>> fdc176ef49419afaa29228aff2af7630a6a8a9a3
+[ext_resource type="PackedScene" uid="uid://c17x43ejgkh2e" path="res://Scenes/enemy.tscn" id="4_enemy"]
+[ext_resource type="PackedScene" uid="uid://fnaeqtcw6krn" path="res://Scenes/world.tscn" id="5_world"]
 
 [node name="Main" type="Node" unique_id=2073461120]
 script = ExtResource("1_idj7w")
 
-[node name="World" parent="." unique_id=785014872 instance=ExtResource("4_rgh2o")]
+[node name="World" parent="." unique_id=785014872 instance=ExtResource("5_world")]
+
+[node name="Enemy" parent="." unique_id=1191545895 instance=ExtResource("4_enemy")]
 
 [node name="Player" parent="." unique_id=627700811 instance=ExtResource("1_r150o")]
 position = Vector2(-1, -1)
@@ -21,5 +20,3 @@ position = Vector2(-1, -1)
 position = Vector2(-1, 1)
 
 [node name="HUD" parent="." unique_id=583667797 instance=ExtResource("3_kln2b")]
-
-[node name="Enemy" parent="." unique_id=1191545895 instance=ExtResource("4_rgh2o")]
