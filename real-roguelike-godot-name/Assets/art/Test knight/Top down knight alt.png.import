@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cic5ra8rjc8rb"
-path="res://.godot/imported/placeholdergun.png-3393e2ea35b37fad7f9af62ce45e7ac6.ctex"
+uid="uid://dncv4duar5rpr"
+path="res://.godot/imported/Top down knight alt.png-cdcd74fe9a4ad6c872f06754df3278df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/placeholdergun.png"
-dest_files=["res://.godot/imported/placeholdergun.png-3393e2ea35b37fad7f9af62ce45e7ac6.ctex"]
+source_file="res://Assets/art/Test knight/Top down knight alt.png"
+dest_files=["res://.godot/imported/Top down knight alt.png-cdcd74fe9a4ad6c872f06754df3278df.ctex"]
 
 [params]
 
