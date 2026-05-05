@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # speed is in pixels per second
-var speed = 100
+var speed = 200
 var screen_size
 
 

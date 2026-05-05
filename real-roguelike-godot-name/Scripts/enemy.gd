@@ -1,26 +1,31 @@
 extends CharacterBody2D
 
 
-var speed = 25
+var speed = 60
 var player_chase = false
 var player = null
 
 
 func _physics_process(delta: float) -> void:
 	if player_chase: 
-		position += (player.position - position)/speed
-	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		if velocity.x < 0:
-			$AnimatedSprite2D.rotation = PI/2
-		elif velocity.x > 0:
-			$AnimatedSprite2D.rotation = -PI/2
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = velocity.y < 0
-		$AnimatedSprite2D.rotation = 0
+		var direction = player.position - position
+		position += direction/speed
+		$AnimatedSprite2D.play()
+		
+		
+		if direction.x != 0 && abs(direction.x) > abs(direction.y):
+			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_v = false
+			if direction.x < 0:
+				$AnimatedSprite2D.rotation = PI/2
+			elif direction.x > 0:
+				$AnimatedSprite2D.rotation = -PI/2
+		elif direction.y != 0 && abs(direction.y) > abs(direction.x):
+			$AnimatedSprite2D.animation = "walk"
+			$AnimatedSprite2D.flip_v = direction.y < 0
+			$AnimatedSprite2D.rotation = 0
+	else:
+		$AnimatedSprite2D.stop()
 	
 
 

@@ -67,30 +67,34 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ta2yt"]
-radius = 100.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
+radius = 1600.3472
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
-radius = 16.666666
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+radius = 266.66666
+height = 733.3333
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1191545895]
 scale = Vector2(0.06, 0.06)
 script = ExtResource("1_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=565102448]
-scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_56vhr")
 animation = &"walk"
+frame = 2
+frame_progress = 0.8780206
 
 [node name="detection_area" type="Area2D" parent="." unique_id=1963384033]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=996963332]
-shape = SubResource("CircleShape2D_ta2yt")
+shape = SubResource("CircleShape2D_afpow")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1272619350]
-shape = SubResource("CircleShape2D_1f0kj")
+position = Vector2(0, -33.333332)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1f0kj")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
