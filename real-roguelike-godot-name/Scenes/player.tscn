@@ -101,3 +101,8 @@ shape = SubResource("CapsuleShape2D_vgqql")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752460658]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vgqql")
+
+[node name="IFrameTimer" type="Timer" parent="." unique_id=173759558]
+one_shot = true
+
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]
