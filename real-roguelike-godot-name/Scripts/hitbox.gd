@@ -1,8 +1,8 @@
 class_name HitBox
 extends Area2D
 
-@export var damage = 20
-@export var knockback_direction = 100
+@export var damage: int = 20
+@export var knockback_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	add_to_group("hitbox")
