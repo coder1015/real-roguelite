@@ -13,10 +13,48 @@ texture_region_size = Vector2i(64, 64)
 2:1/0 = 0
 0:2/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_tlwt5"]
+[sub_resource type="TileSet" id="TileSet_go701"]
 tile_size = Vector2i(64, 64)
-sources/4 = SubResource("TileSetAtlasSource_a02cp")
+sources/0 = SubResource("TileSetAtlasSource_a02cp")
 
-[node name="World" type="TileMapLayer" unique_id=785014872]
-tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 4, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 4, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_tlwt5")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
+texture = ExtResource("1_a02cp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5a7ea"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_go701")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j60k"]
+texture = ExtResource("1_a02cp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fo5ed"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_8j60k")
+
+[node name="World" type="Node2D" unique_id=94664925]
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=2013494260]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_go701")
+
+[node name="Decorations" type="TileMapLayer" parent="." unique_id=1274346856]
+tile_set = SubResource("TileSet_5a7ea")
+
+[node name="Obstacles" type="TileMapLayer" parent="." unique_id=1392002351]
+tile_set = SubResource("TileSet_fo5ed")
