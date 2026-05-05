@@ -7,6 +7,7 @@ var hp: int = 100
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
+	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	hide()
 	
 
@@ -33,8 +34,15 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-func take_damage():
-	hp =- 10
+func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
+	take_damage(damage, knockback)
+	
+func take_damage(damage: int, knockback: Vector2) -> void:
+	hp -= damage
+	velocity += knockback
+	if hp <= 0:
+		die()
+
 func die():
 	queue_free()
 
