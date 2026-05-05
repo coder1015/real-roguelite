@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://fnaeqtcw6krn"]
 
+[ext_resource type="Texture2D" uid="uid://b101ru63svkq3" path="res://Assets/art/Grass biome/Grass biome assets.png" id="1_a02cp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02cp"]
+texture = ExtResource("1_a02cp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
+tile_size = Vector2i(64, 64)
+sources/4 = SubResource("TileSetAtlasSource_a02cp")
 
 [node name="World" type="TileMapLayer" unique_id=785014872]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 4, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 4, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_tlwt5")
