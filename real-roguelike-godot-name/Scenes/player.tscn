@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://05vjwaxdj1tf" path="res://Scripts/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight/Test knight walking sprite sheet.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/gun.tscn" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://c1446xttna5p6" path="res://Scripts/hurtbox.gd" id="4_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_onrkg")
@@ -68,9 +69,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
-radius = 16.0
-height = 44.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqql"]
+radius = 14.0
+height = 46.0
 
 [node name="Player" type="CharacterBody2D" unique_id=627700811]
 position = Vector2(-6, 18)
@@ -84,15 +85,17 @@ scale = Vector2(0.06, 0.06)
 sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1566271148]
-position = Vector2(0, -2)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_cvnsp")
-
 [node name="Gun" parent="." unique_id=317674117 instance=ExtResource("3_6t5aa")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1955031908]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1548996588]
+script = ExtResource("4_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1893315581]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vgqql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752460658]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vgqql")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://k66sm1sjuv0o" path="res://Assets/art/projectile.png" id="1_f8cdk"]
 [ext_resource type="Script" uid="uid://bblncljfrkkht" path="res://Scripts/projectile.gd" id="1_yr2qt"]
+[ext_resource type="Script" uid="uid://b1i34f7d4vu7x" path="res://Scripts/hitbox.gd" id="3_tl4hk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yr2qt"]
 atlas = ExtResource("1_f8cdk")
@@ -39,8 +40,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cu5m1"]
-radius = 16.03122
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl4hk"]
+radius = 16.0
 
 [node name="Projectile" type="Area2D" unique_id=919965382]
 script = ExtResource("1_yr2qt")
@@ -50,14 +51,16 @@ sprite_frames = SubResource("SpriteFrames_cgh1o")
 animation = &"funnyface"
 frame_progress = 0.5344852
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1984457657]
-shape = SubResource("CircleShape2D_cu5m1")
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1269271627]
 rect = Rect2(-45, -44, 90, 89)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2056932594]
+script = ExtResource("3_tl4hk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1728785777]
+shape = SubResource("CircleShape2D_tl4hk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=391423565]
+shape = SubResource("CircleShape2D_tl4hk")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

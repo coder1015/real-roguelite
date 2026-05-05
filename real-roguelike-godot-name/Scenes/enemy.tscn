@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b87yaqmrhqjnr" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://cmc8grofry5di" path="res://Assets/art/zombiewalk.png" id="2_afpow"]
+[ext_resource type="Script" uid="uid://b1i34f7d4vu7x" path="res://Scripts/hitbox.gd" id="3_287tu"]
+[ext_resource type="Script" uid="uid://c1446xttna5p6" path="res://Scripts/hurtbox.gd" id="4_0830c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
 atlas = ExtResource("2_afpow")
@@ -70,9 +72,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_afpow"]
 radius = 1600.3472
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_287tu"]
 radius = 266.66666
 height = 733.3333
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+radius = 266.66666
+height = 733.3335
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1191545895]
 scale = Vector2(0.06, 0.06)
@@ -89,19 +95,32 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=996963332]
+visible = false
+position = Vector2(16.666666, -33.333313)
 shape = SubResource("CircleShape2D_afpow")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=605207952]
+script = ExtResource("3_287tu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1116481759]
+position = Vector2(16.666656, -33.333336)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_287tu")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1180759879]
+script = ExtResource("4_0830c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1272619350]
-position = Vector2(0, -33.333324)
+position = Vector2(16.666656, -33.333313)
 rotation = 1.5707964
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("CapsuleShape2D_1f0kj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=956478170]
+position = Vector2(16.666626, -33.333313)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_287tu")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
