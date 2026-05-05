@@ -100,6 +100,8 @@ position = Vector2(16.666666, -33.333313)
 shape = SubResource("CircleShape2D_afpow")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=605207952]
+collision_layer = 16
+collision_mask = 2
 script = ExtResource("3_287tu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1116481759]
@@ -108,6 +110,8 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_287tu")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1180759879]
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("4_0830c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1272619350]
