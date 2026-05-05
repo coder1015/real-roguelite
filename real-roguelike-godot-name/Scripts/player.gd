@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed: int = 200
 var screen_size
 var hp: int = 100
+var invincible: bool = false
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -38,10 +39,15 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
 	
 func take_damage(damage: int, knockback: Vector2) -> void:
+	if invincible:
+		return
 	hp -= damage
 	velocity += knockback
+	invincible = true
+	$IFrameTimer.start(0.6)
 	if hp <= 0:
 		die()
+	get_parent().get_node("HUD").update_hp(hp)
 
 func die():
 	queue_free()
@@ -63,3 +69,7 @@ func _animate():
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_v = velocity.y < 0
 		$AnimatedSprite2D.rotation = 0
+
+
+func _on_i_frame_timer_timeout() -> void:
+	invincible = false # Replace with function body.

@@ -14,4 +14,6 @@ func _process(delta: float) -> void:
 func show_message(text):
 	$Message.text = text
 	$Message.show()
-	
+
+func update_hp(hp: int) -> void:
+	$PlayerHP.text = "HP: " + str(hp)

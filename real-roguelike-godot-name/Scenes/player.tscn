@@ -90,6 +90,8 @@ animation = &"walk"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1955031908]
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1548996588]
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("4_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1893315581]
@@ -99,3 +101,8 @@ shape = SubResource("CapsuleShape2D_vgqql")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752460658]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vgqql")
+
+[node name="IFrameTimer" type="Timer" parent="." unique_id=173759558]
+one_shot = true
+
+[connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]
