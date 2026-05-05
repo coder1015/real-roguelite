@@ -56,4 +56,8 @@ shape = SubResource("CircleShape2D_cu5m1")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1269271627]
 rect = Rect2(-45, -44, 90, 89)
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=2056932594]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1728785777]
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -91,9 +91,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=996963332]
 shape = SubResource("CircleShape2D_afpow")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1272619350]
-position = Vector2(0, -33.333332)
+[node name="Hitbox" type="Area2D" parent="." unique_id=605207952]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1116481759]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1180759879]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1272619350]
+position = Vector2(0, -33.333324)
 rotation = 1.5707964
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("CapsuleShape2D_1f0kj")
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

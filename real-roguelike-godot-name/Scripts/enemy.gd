@@ -4,6 +4,7 @@ extends CharacterBody2D
 var speed = 60
 var player_chase = false
 var player = null
+var health = 100
 
 
 func _physics_process(delta: float) -> void:
