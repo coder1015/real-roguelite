@@ -46,6 +46,7 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 func take_damage(damage: int, knockback: Vector2) -> void:
 	if invincible:
 		return
+	print("take_damage called with: ", damage)
 	hp -= damage
 	knockback_velocity = knockback
 	invincible = true

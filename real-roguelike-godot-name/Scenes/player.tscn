@@ -73,6 +73,9 @@ animations = [{
 radius = 14.0
 height = 46.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D" unique_id=627700811]
 position = Vector2(-6, 18)
 collision_layer = 2
@@ -100,8 +103,9 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752460658]
+position = Vector2(0, -2)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_vgqql")
+shape = SubResource("CircleShape2D_vgqql")
 
 [node name="IFrameTimer" type="Timer" parent="." unique_id=173759558]
 one_shot = true

@@ -12,17 +12,20 @@ func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	$Hitbox.monitoring = true
+	$Hitbox.monitorable = false
+	$DamageCooldownTimer.timeout.connect(_on_damage_cooldown_timer_timeout)
+
 
 func _physics_process(delta):
 	if player_chase:
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed + knockback_velocity
 		_animate(direction)
-		check_player_overlap()
 	else:
 		velocity = knockback_velocity
 	move_and_slide()
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
+	check_player_overlap()
 
 func take_damage(damage: int, knockback: Vector2) -> void:
 	health -= damage
@@ -44,22 +47,19 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurtbox"):
-		var direction = (area.global_position - global_position).normalized()
-		var knockback = direction * 600
-		area.get_parent().take_damage(10, knockback)
-
 func check_player_overlap():
 	if damage_cooldown or player == null:
 		return
 	var distance = global_position.distance_to(player.global_position)
-	if distance < 40:  # tweak this number to match your hitbox size
+	print("HIT - distance: ", distance, " cooldown: ", damage_cooldown)
+	if distance < 40:
 		var direction = (player.global_position - global_position).normalized()
 		player.take_damage(10, direction * 600)
 		damage_cooldown = true
-		await get_tree().create_timer(0.5).timeout
-		damage_cooldown = false
+		$DamageCooldownTimer.start(0.8)
+
+func _on_damage_cooldown_timer_timeout() -> void:
+	damage_cooldown = false
 
 func _animate(direction):
 	$AnimatedSprite2D.play()
