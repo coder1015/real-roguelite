@@ -75,7 +75,8 @@ height = 46.0
 
 [node name="Player" type="CharacterBody2D" unique_id=627700811]
 position = Vector2(-6, 18)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
@@ -88,7 +89,6 @@ animation = &"walk"
 [node name="Gun" parent="." unique_id=317674117 instance=ExtResource("3_6t5aa")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1955031908]
-zoom = Vector2(0.1, 0.1)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1548996588]
 collision_layer = 2

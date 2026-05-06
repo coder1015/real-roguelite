@@ -9,8 +9,8 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 var damage_cooldown = false
 
 func _ready() -> void:
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
-	$Hitbox.area_entered.connect(_on_hitbox_area_entered)
 	$Hitbox.monitoring = true
 
 func _physics_process(delta):
@@ -18,31 +18,11 @@ func _physics_process(delta):
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed + knockback_velocity
 		_animate(direction)
+		check_player_overlap()
 	else:
 		velocity = knockback_velocity
-
 	move_and_slide()
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
-	check_player_overlap()
-
-func check_player_overlap():
-	if damage_cooldown:
-		return
-
-	for area in $Hitbox.get_overlapping_areas():
-		if area.is_in_group("hurtbox"):
-			var player = area.get_parent()
-			
-			var direction = (player.global_position - global_position).normalized()
-			var knockback = direction * 300
-			
-			player.take_damage(10, knockback)
-			
-			damage_cooldown = true
-			await get_tree().create_timer(0.5).timeout
-			damage_cooldown = false
-			
-			break
 
 func take_damage(damage: int, knockback: Vector2) -> void:
 	health -= damage
@@ -66,10 +46,20 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
-		var player = area.get_parent()
+		var direction = (area.global_position - global_position).normalized()
+		var knockback = direction * 600
+		area.get_parent().take_damage(10, knockback)
+
+func check_player_overlap():
+	if damage_cooldown or player == null:
+		return
+	var distance = global_position.distance_to(player.global_position)
+	if distance < 40:  # tweak this number to match your hitbox size
 		var direction = (player.global_position - global_position).normalized()
-		var knockback = direction * 300
-		player.take_damage(10, knockback)
+		player.take_damage(10, direction * 600)
+		damage_cooldown = true
+		await get_tree().create_timer(0.5).timeout
+		damage_cooldown = false
 
 func _animate(direction):
 	$AnimatedSprite2D.play()

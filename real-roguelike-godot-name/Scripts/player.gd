@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 # speed is in pixels per second
-var speed: int = 1000
+var speed: int = 200
 var screen_size
 var hp: int = 100
 var invincible: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	screen_size = get_viewport_rect().size
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	get_parent().get_node("HUD").update_hp(hp)

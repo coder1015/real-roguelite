@@ -82,6 +82,8 @@ height = 733.3335
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1191545895]
 scale = Vector2(0.06, 0.06)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_1f0kj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=565102448]
@@ -91,7 +93,7 @@ frame = 2
 frame_progress = 0.8780206
 
 [node name="detection_area" type="Area2D" parent="." unique_id=1963384033]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area" unique_id=996963332]
