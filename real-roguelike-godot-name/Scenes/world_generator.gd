@@ -59,15 +59,17 @@ func generate_ground():
 			var e = elevation_noise.get_noise_2d(x, y)
 			var m = moisture_noise.get_noise_2d(x, y)
 			var tile = get_ground_tile(e, m)
-			ground_layer.set_cell(Vector2i(x, y), SOURCE_ID, tile)
+			ground_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, tile)
 			
 			
 func get_ground_tile(e: float, m: float) -> Vector2i:
 	# e = elevation (-1 to 1), m = moisture (-1 to 1)
 	if e < -0.33:
 		return TILE_SNOW
-	elif e < 0.33:
+	elif e >= -0.33 and e < 0.33:
 		return TILE_SAND
+	elif e >= 0.33 and e <= 1:
+		return TILE_GRASS
 	else:
 		return TILE_GRASS
 		

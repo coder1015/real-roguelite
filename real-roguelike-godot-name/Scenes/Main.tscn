@@ -9,10 +9,10 @@
 [node name="Main" type="Node" unique_id=2073461120]
 script = ExtResource("1_idj7w")
 
+[node name="World" parent="." unique_id=94664925 instance=ExtResource("5_world")]
+
 [node name="Enemy" parent="." unique_id=1191545895 instance=ExtResource("4_enemy")]
 position = Vector2(336.00003, 190)
-
-[node name="World" parent="." unique_id=94664925 instance=ExtResource("5_world")]
 
 [node name="Player" parent="." unique_id=627700811 instance=ExtResource("1_r150o")]
 position = Vector2(-1, -1)
