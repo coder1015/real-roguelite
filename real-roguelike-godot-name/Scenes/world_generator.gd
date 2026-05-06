@@ -60,17 +60,11 @@ var tile_map = {}
 
 
 func _ready() -> void:
-	print("Starting generation...")
 	setup_noise()
-	print("Noise set up")
 	generate_ground()
-	print("Ground generated, tile_map size: ", tile_map.size())
 	place_decorations()
-	print("Decorations placed")
 	place_obstacles()
-	print("Obstacles placed")
 	place_borders()
-	print("Borders placed")
 
 
 func setup_noise():
