@@ -45,12 +45,12 @@ func _ready() -> void:
 func setup_noise():
 	elevation_noise.seed = randi()
 	elevation_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
-	elevation_noise.frequency = 0.05
+	elevation_noise.frequency = 0.02
 
 	# Moisture uses a different seed so it's independent from elevation
 	moisture_noise.seed = elevation_noise.seed + 1
 	moisture_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
-	moisture_noise.frequency = 0.05
+	moisture_noise.frequency = 0.02
 	
 
 func generate_ground():
@@ -64,23 +64,47 @@ func generate_ground():
 			
 func get_ground_tile(e: float, m: float) -> Vector2i:
 	# e = elevation (-1 to 1), m = moisture (-1 to 1)
-	if e < -0.33:
-		return TILE_SNOW
-	elif e >= -0.33 and e < 0.33:
-		return TILE_SAND
-	elif e >= 0.33 and e <= 1:
-		return TILE_GRASS
+	if e < -0.2:
+		if m < 0:
+			return TILE_SNOW
+		else:
+			return TILE_SNOW
+	elif e > 0.3:
+		if m < 0.2:
+			return TILE_SAND
+		else:
+			return TILE_GRASS
 	else:
-		return TILE_GRASS
+		if m < -0.3:
+			return TILE_SAND
+		else:
+			return TILE_GRASS
 		
 func place_decorations():
 	for x in WORLD_WIDTH:
 		for y in WORLD_HEIGHT:
 			var e = elevation_noise.get_noise_2d(x, y)
-			if e >= 0.33:
-				var roll = randf()
-				if roll < 0.05:
-					decorations_layer.set_cell(Vector2i(x, y), SOURCE_ID, DECO_FLOWER)
+			var m = moisture_noise.get_noise_2d(x, y)
+					
+			if e < -0.2:
+				if m < 0:
+					pass
+				else:
+					pass
+			elif e > 0.3:
+				if m < 0.2:
+					pass
+				else:
+					var roll = randf()
+					if roll < 0.05:
+						decorations_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, DECO_FLOWER)
+			else:
+				if m < -0.3:
+					pass
+				else:
+					var roll = randf()
+					if roll < 0.05:
+						decorations_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, DECO_FLOWER)
 
 
 func place_obstacles():
@@ -88,24 +112,44 @@ func place_obstacles():
 		for y in WORLD_HEIGHT:
 			var e = elevation_noise.get_noise_2d(x, y)
 			var m = moisture_noise.get_noise_2d(x, y)
-
-			if e < -0.33:
-				var roll = randf()
-				# Snow biome gets ice
-				if roll < 0.1:
-					obstacles_layer.set_cell(Vector2i(x, y), SOURCE_ID, OBST_ICE)
-			elif e < 0.33:
-				var roll = randf()
-				# Sand biome gets palm trees
-				if roll < 0.15:
-					obstacles_layer.set_cell(Vector2i(x, y), SOURCE_ID, OBST_PALM)
+					
+			if e < -0.2:
+				if m < 0:
+					var roll = randf()
+					# Snow biome gets ice
+					if roll < 0.1:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_ICE)
+				else:
+					var roll = randf()
+					# Snow biome gets ice
+					if roll < 0.1:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_ICE)
+			elif e > 0.3:
+				if m < 0.2:
+					var roll = randf()
+					# Sand biome gets palm trees
+					if roll < 0.05:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_PALM)
+				else:
+					var roll = randf()
+					# Grass biome gets rocks and trees
+					if roll < 0.1:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_ROCK)
+					elif roll < 0.2:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_TREE)
 			else:
-				var roll = randf()
-				# Grass biome gets rocks and trees
-				if roll < 0.1:
-					obstacles_layer.set_cell(Vector2i(x, y), SOURCE_ID, OBST_ROCK)
-				elif roll < 0.2:
-					obstacles_layer.set_cell(Vector2i(x, y), SOURCE_ID, OBST_TREE)
+				if m < -0.3:
+					var roll = randf()
+					# Sand biome gets palm trees
+					if roll < 0.05:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_PALM)
+				else:
+					var roll = randf()
+					# Grass biome gets rocks and trees
+					if roll < 0.1:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_ROCK)
+					elif roll < 0.2:
+						obstacles_layer.set_cell(Vector2i(x - WORLD_WIDTH/2, y - WORLD_HEIGHT/2), SOURCE_ID, OBST_TREE)
 	
 	
 	
