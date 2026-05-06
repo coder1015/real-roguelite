@@ -1,51 +1,70 @@
 [gd_scene format=4 uid="uid://fnaeqtcw6krn"]
 
-[ext_resource type="Texture2D" uid="uid://b101ru63svkq3" path="res://Assets/art/Grass biome/Grass biome assets.png" id="1_a02cp"]
+[ext_resource type="Texture2D" uid="uid://da02ai0txoyf8" path="res://Assets/art/Grass biome/Biome assets.png" id="2_go701"]
+[ext_resource type="Script" uid="uid://d1eph1rocbaj" path="res://Scenes/world_generator.gd" id="3_5a7ea"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a02cp"]
-texture = ExtResource("1_a02cp")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
+texture = ExtResource("2_go701")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
+3:1/0 = 0
 0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_go701"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_a02cp")
+sources/2 = SubResource("TileSetAtlasSource_go701")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
-texture = ExtResource("1_a02cp")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a7ea"]
+texture = ExtResource("2_go701")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
+3:1/0 = 0
 0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5a7ea"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_go701")
+sources/2 = SubResource("TileSetAtlasSource_5a7ea")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j60k"]
-texture = ExtResource("1_a02cp")
+texture = ExtResource("2_go701")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
+3:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
+3:1/0 = 0
 0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fo5ed"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_8j60k")
+sources/2 = SubResource("TileSetAtlasSource_8j60k")
 
 [node name="World" type="Node2D" unique_id=94664925]
 
@@ -60,3 +79,6 @@ tile_set = SubResource("TileSet_5a7ea")
 [node name="Obstacles" type="TileMapLayer" parent="." unique_id=1392002351]
 tile_map_data = PackedByteArray("AAD+////AQABAAEAAAAAAAEAAQABAAEAAAADAP//AQABAAEAAAACAAAAAQACAAEAAAAAAP7/AQACAAEAAAD+/wEAAQACAAEAAAD9////AQACAAEAAAA=")
 tile_set = SubResource("TileSet_fo5ed")
+
+[node name="WorldGenerator" type="Node" parent="." unique_id=637384158]
+script = ExtResource("3_5a7ea")
