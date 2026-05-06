@@ -17,6 +17,7 @@ func _physics_process(delta):
 	if player_chase:
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed + knockback_velocity
+		_animate(direction)
 	else:
 		velocity = knockback_velocity
 
