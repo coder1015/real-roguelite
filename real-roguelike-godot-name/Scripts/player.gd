@@ -5,6 +5,7 @@ var speed: int = 1000
 var screen_size
 var hp: int = 100
 var invincible: bool = false
+var knockback_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
@@ -14,23 +15,25 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2.ZERO
+	var input_velocity = Vector2.ZERO
+	
 	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
+		input_velocity.x += 1
 	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
+		input_velocity.x -= 1
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1
+		input_velocity.y += 1
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	_animate()
-	
+		input_velocity.y -= 1	
 
+	if input_velocity.length() > 0:
+		input_velocity = input_velocity.normalized() * speed
+
+	velocity = input_velocity + knockback_velocity
+	
+	_animate()
 	move_and_slide()
-	
-	
+	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
 func start(pos):
 	position = pos
 	show()
@@ -43,7 +46,7 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 	if invincible:
 		return
 	hp -= damage
-	velocity += knockback
+	knockback_velocity = knockback
 	invincible = true
 	$IFrameTimer.start(0.6)
 	if hp <= 0:
