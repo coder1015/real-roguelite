@@ -88,6 +88,7 @@ animation = &"walk"
 [node name="Gun" parent="." unique_id=317674117 instance=ExtResource("3_6t5aa")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1955031908]
+zoom = Vector2(0.1, 0.1)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1548996588]
 collision_layer = 2

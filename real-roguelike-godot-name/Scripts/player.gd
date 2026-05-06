@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # speed is in pixels per second
-var speed: int = 200
+var speed: int = 1000
 var screen_size
 var hp: int = 100
 var invincible: bool = false

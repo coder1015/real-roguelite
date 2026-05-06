@@ -6,6 +6,7 @@ extends Node
 @onready var obstacles_layer = $"../Obstacles"
 
 # World settings
+# 45 secs to get from corner to corner
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 100
 const TILE_SIZE = 32
