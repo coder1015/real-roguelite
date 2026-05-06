@@ -8,6 +8,8 @@ var health = 100
 
 func _ready() -> void:
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
+	$Hitbox.area_entered.connect(_on_hitbox_area_entered)
+	$Hitbox.monitoring = true
 
 func _physics_process(delta: float) -> void:
 	if player_chase:
@@ -38,8 +40,11 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
-	
-	
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		var direction = (area.global_position - global_position).normalized()
+		$Hitbox.knockback_direction = direction * 300
 
 func _animate(direction):
 	$AnimatedSprite2D.play()

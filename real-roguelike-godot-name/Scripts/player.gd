@@ -9,6 +9,7 @@ var invincible: bool = false
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
+	get_parent().get_node("HUD").update_hp(hp)
 	hide()
 	
 
