@@ -6,6 +6,8 @@ var screen_size
 var hp: int = 100
 var invincible: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
+var current_weapon: BaseWeapon = null
+
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -13,6 +15,8 @@ func _ready() -> void:
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	get_parent().get_node("HUD").update_hp(hp)
 	hide()
+	$weapon_system/Ranged/Gun.hide()  # hide all weapons first
+	set_weapon($weapon_system/Ranged/EBow)
 	
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
 	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
@@ -41,8 +45,9 @@ func _physics_process(delta: float) -> void:
 	velocity = input_velocity + knockback_velocity
 	
 	if Input.is_action_pressed("shoot_projectile"):
-		$weapon_system/Ranged/Gun.try_attack(get_global_mouse_position())
-	
+		if current_weapon:
+			current_weapon.try_attack(get_global_mouse_position())
+
 	_animate()
 	move_and_slide()
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
@@ -65,6 +70,12 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 	if hp <= 0:
 		die()
 	get_parent().get_node("HUD").update_hp(hp)
+	
+func set_weapon(weapon: BaseWeapon) -> void:
+	if current_weapon:
+		current_weapon.hide()
+	current_weapon = weapon
+	current_weapon.show()
 
 func die():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
