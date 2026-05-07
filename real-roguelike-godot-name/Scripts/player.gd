@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity = input_velocity + knockback_velocity
 	
-	if Input.is_action_just_pressed("shoot_projectile"):
+	if Input.is_action_pressed("shoot_projectile"):
 		$weapon_system/Ranged/Gun.try_attack(get_global_mouse_position())
 	
 	_animate()

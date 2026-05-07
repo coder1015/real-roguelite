@@ -28,8 +28,9 @@ func _physics_process(delta):
 	check_player_overlap()
 
 func take_damage(damage: int, knockback: Vector2) -> void:
+	print("enemy take_damage - knockback: ", knockback)
 	health -= damage
-	velocity += knockback
+	knockback_velocity += knockback
 	if health <= 0:
 		die()
 
@@ -51,7 +52,7 @@ func check_player_overlap():
 	if damage_cooldown or player == null:
 		return
 	var distance = global_position.distance_to(player.global_position)
-	print("HIT - distance: ", distance, " cooldown: ", damage_cooldown)
+	#print("HIT - distance: ", distance, " cooldown: ", damage_cooldown)
 	if distance < 40:
 		var direction = (player.global_position - global_position).normalized()
 		player.take_damage(10, direction * 600)

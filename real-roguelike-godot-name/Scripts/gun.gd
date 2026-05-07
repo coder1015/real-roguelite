@@ -15,3 +15,6 @@ func _do_attack(target_pos: Vector2) -> void:
 	projectile_instance.global_position = muzzle.global_position
 	projectile_instance.rotation = rotation
 	projectile_instance.get_node("Hitbox").damage = damage
+	var hitbox = projectile_instance.get_node("Hitbox")
+	hitbox.damage = damage
+	hitbox.knockback_direction = (target_pos - muzzle.global_position).normalized() * knockback_force
