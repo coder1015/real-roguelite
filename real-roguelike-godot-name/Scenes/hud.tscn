@@ -14,7 +14,3 @@ theme_override_font_sizes/font_size = 16
 offset_top = 44.0
 offset_right = 124.0
 offset_bottom = 67.0
-
-[node name="Message" type="Label" parent="." unique_id=450640190]
-offset_right = 40.0
-offset_bottom = 23.0

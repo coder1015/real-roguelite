@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="real-roguelikeGodotName"
-run/main_scene="uid://dg4wv8sjl8ysy"
+run/main_scene="uid://c81kkr8ppqm7a"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
