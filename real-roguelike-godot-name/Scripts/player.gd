@@ -64,7 +64,7 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 	get_parent().get_node("HUD").update_hp(hp)
 
 func die():
-	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _animate():
 	if velocity.length() > 0:
