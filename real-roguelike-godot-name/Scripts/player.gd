@@ -34,11 +34,14 @@ func _physics_process(delta: float) -> void:
 		input_velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		input_velocity.y -= 1	
-
+	
 	if input_velocity.length() > 0:
 		input_velocity = input_velocity.normalized() * speed
 
 	velocity = input_velocity + knockback_velocity
+	
+	if Input.is_action_just_pressed("shoot_projectile"):
+		$weapon_system/Ranged/Gun.try_attack(get_global_mouse_position())
 	
 	_animate()
 	move_and_slide()
