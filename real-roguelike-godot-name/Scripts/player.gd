@@ -14,6 +14,14 @@ func _ready() -> void:
 	get_parent().get_node("HUD").update_hp(hp)
 	hide()
 	
+	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
+	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
+	
+	$Camera2D.limit_left   = -width
+	$Camera2D.limit_top    = -height
+	$Camera2D.limit_right  =  width
+	$Camera2D.limit_bottom =  height
+	
 
 func _physics_process(delta: float) -> void:
 	var input_velocity = Vector2.ZERO

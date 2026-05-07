@@ -5,11 +5,6 @@ extends Node
 @onready var decorations_layer = $"../Decorations"
 @onready var obstacles_layer = $"../Obstacles"
 
-# World settings
-const WORLD_WIDTH = 100
-const WORLD_HEIGHT = 100
-const TILE_SIZE = 32
-
 const MIN_BIOME_SIZE = 50
 
 # Noise
@@ -65,6 +60,7 @@ func _ready() -> void:
 	place_decorations()
 	place_obstacles()
 	place_borders()
+	generate_borders()
 
 
 func setup_noise():
@@ -87,8 +83,8 @@ func get_ground_tile(t: float, m: float) -> Vector2i:
 
 
 func generate_ground():
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			var t = temp_noise.get_noise_2d(x, y)
 			var m = moisture_noise.get_noise_2d(x, y)
 			tile_map[Vector2i(x, y)] = get_ground_tile(t, m)
@@ -99,10 +95,10 @@ func generate_ground():
 	smooth_biomes()
 	remove_small_regions()
 
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			ground_layer.set_cell(
-				Vector2i(x - WORLD_WIDTH / 2, y - WORLD_HEIGHT / 2),
+				Vector2i(x - Globals.WORLD_WIDTH / 2, y - Globals.WORLD_HEIGHT / 2),
 				SOURCE_ID,
 				tile_map[Vector2i(x, y)]
 			)
@@ -110,8 +106,8 @@ func generate_ground():
 
 func smooth_biomes():
 	var new_map = tile_map.duplicate()
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			var coord = Vector2i(x, y)
 			var neighbors = get_neighbor_counts(x, y)
 			var dominant = get_dominant_tile(neighbors)
@@ -128,7 +124,7 @@ func get_neighbor_counts(x: int, y: int) -> Dictionary:
 				continue
 			var nx = x + dx
 			var ny = y + dy
-			if nx >= 0 and nx < WORLD_WIDTH and ny >= 0 and ny < WORLD_HEIGHT:
+			if nx >= 0 and nx < Globals.WORLD_WIDTH and ny >= 0 and ny < Globals.WORLD_HEIGHT:
 				var tile = tile_map[Vector2i(nx, ny)]
 				counts[tile] = counts.get(tile, 0) + 1
 	return counts
@@ -155,10 +151,10 @@ func get_foreign_dirs(x: int, y: int) -> Array:
 
 
 func place_decorations():
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			var biome = tile_map[Vector2i(x, y)]
-			var cell = Vector2i(x - WORLD_WIDTH / 2, y - WORLD_HEIGHT / 2)
+			var cell = Vector2i(x - Globals.WORLD_WIDTH / 2, y - Globals.WORLD_HEIGHT / 2)
 
 			if get_foreign_dirs(x, y).size() > 0:
 				continue
@@ -169,33 +165,33 @@ func place_decorations():
 
 
 func place_obstacles():
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			var biome = tile_map[Vector2i(x, y)]
-			var cell = Vector2i(x - WORLD_WIDTH / 2, y - WORLD_HEIGHT / 2)
+			var cell = Vector2i(x - Globals.WORLD_WIDTH / 2, y - Globals.WORLD_HEIGHT / 2)
 
 			if get_foreign_dirs(x, y).size() > 0:
 				continue
 
 			var roll = randf()
 			if biome == TILE_SNOW:
-				if roll < 0.1:
+				if roll < 0.075:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_ICE)
 			elif biome == TILE_SAND:
 				if roll < 0.05:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_PALM)
 			elif biome == TILE_GRASS:
-				if roll < 0.1:
+				if roll < 0.05:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_ROCK)
-				elif roll < 0.2:
+				elif roll < 0.05:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_TREE)
 
 
 func remove_small_regions():
 	var visited = {}
 
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
 			var coord = Vector2i(x, y)
 			if visited.has(coord):
 				continue
@@ -232,10 +228,42 @@ func remove_small_regions():
 					tile_map[cell] = replacement
 
 
+func generate_borders():
+	var half_w = Globals.WORLD_WIDTH * Globals.TILE_SIZE
+	var half_h = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
+	var thickness = Globals.TILE_SIZE * 2  # how thick the invisible wall is
+	
+	# Each wall: position, width, height
+	var walls = [
+		# Top
+		[Vector2(0, -half_h - thickness / 2), half_w * 2 + thickness * 2, thickness],
+		# Bottom
+		[Vector2(0, half_h + thickness / 2), half_w * 2 + thickness * 2, thickness],
+		# Left
+		[Vector2(-half_w - thickness / 2, 0), thickness, half_h * 2],
+		# Right
+		[Vector2(half_w + thickness / 2, 0), thickness, half_h * 2],
+	]
+	
+	for wall in walls:
+		var body = StaticBody2D.new()
+		body.position = wall[0]
+		body.collision_layer = 1  # world layer
+		body.collision_mask = 0
+		
+		var shape = CollisionShape2D.new()
+		var rect = RectangleShape2D.new()
+		rect.size = Vector2(wall[1], wall[2])
+		shape.shape = rect
+		
+		body.add_child(shape)
+		get_parent().add_child.call_deferred(body)
+
+
 func place_borders():
-	for x in WORLD_WIDTH:
-		for y in WORLD_HEIGHT:
-			var cell = Vector2i(x - WORLD_WIDTH / 2, y - WORLD_HEIGHT / 2)
+	for x in Globals.WORLD_WIDTH:
+		for y in Globals.WORLD_HEIGHT:
+			var cell = Vector2i(x - Globals.WORLD_WIDTH / 2, y - Globals.WORLD_HEIGHT / 2)
 			var foreign = get_foreign_dirs(x, y)
 
 			match foreign.size():

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight/Test knight walking sprite sheet.png" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/Weapons/gun.tscn" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://c1446xttna5p6" path="res://Scripts/hurtbox.gd" id="4_vgqql"]
-[ext_resource type="PackedScene" path="res://Scenes/weapon_system.tscn" id="5_fkybt"]
+[ext_resource type="PackedScene" uid="uid://sqyvb2so7wxw" path="res://Scenes/weapon_system.tscn" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_onrkg")
