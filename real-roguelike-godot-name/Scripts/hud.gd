@@ -11,9 +11,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func show_message(text):
-	$Message.text = text
-	$Message.show()
+func show_coords(text):
+	$Coords.text = text
+	$Coords.show()
 
 func update_hp(hp: int) -> void:
 	$PlayerHP.text = "HP: " + str(hp)

@@ -229,20 +229,20 @@ func remove_small_regions():
 
 
 func generate_borders():
-	var half_w = Globals.WORLD_WIDTH * Globals.TILE_SIZE
-	var half_h = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
+	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
+	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
 	var thickness = Globals.TILE_SIZE * 2  # how thick the invisible wall is
 	
 	# Each wall: position, width, height
 	var walls = [
 		# Top
-		[Vector2(0, -half_h - thickness / 2), half_w * 2 + thickness * 2, thickness],
+		[Vector2(0, -height - thickness / 2), width * 2 + thickness * 2, thickness],
 		# Bottom
-		[Vector2(0, half_h + thickness / 2), half_w * 2 + thickness * 2, thickness],
+		[Vector2(0, height + thickness / 2), width * 2 + thickness * 2, thickness],
 		# Left
-		[Vector2(-half_w - thickness / 2, 0), thickness, half_h * 2],
+		[Vector2(-width - thickness / 2, 0), thickness, height * 2],
 		# Right
-		[Vector2(half_w + thickness / 2, 0), thickness, half_h * 2],
+		[Vector2(width + thickness / 2, 0), thickness, height * 2],
 	]
 	
 	for wall in walls:
