@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://sqyvb2so7wxw"]
 
+[ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/gun.tscn" id="1_2m13o"]
+
 [node name="weapon_system" type="Node" unique_id=206156080]
+
+[node name="Ranged" type="Node2D" parent="." unique_id=1034293802]
+
+[node name="Gun" parent="Ranged" unique_id=317674117 instance=ExtResource("1_2m13o")]
+
+[node name="Melee" type="Node2D" parent="." unique_id=1226743658]
