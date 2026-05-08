@@ -1,14 +1,8 @@
 [gd_scene format=3 uid="uid://baxsilv032upy"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://cfsgr7h3v1a3b" path="res://Scripts/ebow.gd" id="1_ue0cn"]
 [ext_resource type="Texture2D" uid="uid://cmthu6wqhp52l" path="res://Assets/art/WeaponAssets/EBow/ZbowIdle.png" id="2_v28bv"]
 [ext_resource type="Texture2D" uid="uid://bm55v7tq5y1w2" path="res://Assets/art/WeaponAssets/EBow/reloadZbow.png" id="3_pw8gy"]
-=======
-[ext_resource type="Script" path="res://Scripts/ebow.gd" id="1_ue0cn"]
-[ext_resource type="Texture2D" uid="uid://cmthu6wqhp52l" path="res://Assets/art/ZbowIdle.png" id="2_v28bv"]
-[ext_resource type="Texture2D" uid="uid://bm55v7tq5y1w2" path="res://Assets/art/reloadZbow.png" id="3_pw8gy"]
->>>>>>> 0a0f3a046cadf89048212c2ca1b581e4484144eb
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfjbe"]
 atlas = ExtResource("2_v28bv")
