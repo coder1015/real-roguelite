@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://crvi3jnnuy3n8"]
+
+[ext_resource type="Script" uid="uid://csqqx2yjbuihd" path="res://pause_menu.gd" id="1_hdmo1"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1137317939]
+script = ExtResource("1_hdmo1")
+
+[node name="Control" type="Control" parent="." unique_id=1987409359]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=837198232]
+layout_mode = 1
+offset_left = 146.0
+offset_top = 83.0
+offset_right = 533.0
+offset_bottom = 303.0
+
+[node name="PausedLabel" type="Label" parent="Control/VBoxContainer" unique_id=1454312987]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+
+[node name="ResumeButton" type="Button" parent="Control/VBoxContainer" unique_id=1953572862]
+layout_mode = 2
+text = "Resume"
+
+[connection signal="pressed" from="Control/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
