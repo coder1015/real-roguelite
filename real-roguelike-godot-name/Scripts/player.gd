@@ -8,6 +8,8 @@ var invincible: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var current_weapon: BaseWeapon = null
 var xp: int = 0
+var level: int = 1
+var xp_to_next_level: int = 100
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -84,6 +86,7 @@ func die():
 func gain_xp(amount: int) -> void:
 	xp += amount
 	get_parent().get_node("HUD").update_xp(xp)
+
 
 func _animate():
 	if velocity.length() > 0:

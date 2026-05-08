@@ -14,12 +14,6 @@ func _process(delta: float) -> void:
 	var ypos = str(round(position.y))
 	$HUD.show_coords(xpos + ", " + ypos)
 
-func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel"):  # Escape key by default
-		if get_tree().paused:
-			pause_menu.hide_menu()
-		else:
-			pause_menu.show_menu()
 
 func new_game():
 	$Player.start($StartPosition.position)

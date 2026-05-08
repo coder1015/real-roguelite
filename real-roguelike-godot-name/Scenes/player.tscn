@@ -76,7 +76,7 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
 radius = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=627700811]
+[node name="Player" type="CharacterBody2D" unique_id=627700811 groups=["player"]]
 position = Vector2(-6, 18)
 collision_layer = 2
 collision_mask = 5
