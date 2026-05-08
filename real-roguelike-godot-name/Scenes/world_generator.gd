@@ -235,6 +235,7 @@ func remove_small_regions():
 
 
 func place_enemies():
+	
 	var clusters_placed = 0
 	var attempts = 0
 	var max_attempts = CLUSTER_COUNT * 10

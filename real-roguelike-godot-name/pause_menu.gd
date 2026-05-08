@@ -7,6 +7,14 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):  # Escape key by default
+		if get_tree().paused:
+			hide_menu()
+		else:
+			show_menu()
+
+
 func show_menu():
 	show()
 	get_tree().paused = true
@@ -15,10 +23,6 @@ func show_menu():
 func hide_menu():
 	hide()
 	get_tree().paused = false
-
-
-func _on_resume_pressed():
-	hide_menu()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

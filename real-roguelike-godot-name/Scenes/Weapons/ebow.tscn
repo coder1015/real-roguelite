@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://baxsilv032upy"]
 
-[ext_resource type="Script" uid="uid://cfsgr7h3v1a3b" path="res://Scripts/ebow.gd" id="1_ue0cn"]
+[ext_resource type="Script" path="res://Scripts/ebow.gd" id="1_ue0cn"]
 [ext_resource type="Texture2D" uid="uid://cmthu6wqhp52l" path="res://Assets/art/ZbowIdle.png" id="2_v28bv"]
 [ext_resource type="Texture2D" uid="uid://bm55v7tq5y1w2" path="res://Assets/art/reloadZbow.png" id="3_pw8gy"]
 
