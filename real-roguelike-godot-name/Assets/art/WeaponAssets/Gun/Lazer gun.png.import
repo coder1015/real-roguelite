@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm55v7tq5y1w2"
-path="res://.godot/imported/reloadZbow.png-6678cc1fb3f8fe12fb629aba61730014.ctex"
+uid="uid://b16l53fxhk8gu"
+path="res://.godot/imported/Lazer gun.png-6613131715bed7e65c90208022a8d0ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/reloadZbow.png"
-dest_files=["res://.godot/imported/reloadZbow.png-6678cc1fb3f8fe12fb629aba61730014.ctex"]
+source_file="res://Assets/art/WeaponAssets/Gun/Lazer gun.png"
+dest_files=["res://.godot/imported/Lazer gun.png-6613131715bed7e65c90208022a8d0ae.ctex"]
 
 [params]
 

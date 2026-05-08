@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dwx84w5u5607k"]
+
+[ext_resource type="Script" uid="uid://58jroirv73b4" path="res://Scripts/sword.gd" id="1_6wdhb"]
+[ext_resource type="Texture2D" uid="uid://b3wp8v5avx8am" path="res://Assets/art/WeaponAssets/Sword/Sword.png" id="1_goa0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wdhb"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(0, 4096, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6wag"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(0, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb2vl"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(2048, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j4cb"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(4096, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksptp"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(0, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uo8h"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(2048, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gx3d"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(4096, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_641iy"]
+atlas = ExtResource("1_goa0h")
+region = Rect2(0, 4096, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juuhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wdhb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6wag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb2vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j4cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksptp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uo8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gx3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_641iy")
+}],
+"loop": true,
+"name": &"reload",
+"speed": 5.0
+}]
+
+[node name="Sword" type="Node2D" unique_id=1914870575]
+script = ExtResource("1_6wdhb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1862255949]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_juuhp")
+animation = &"idle"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1411217567]

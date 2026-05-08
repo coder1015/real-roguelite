@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d4fpjul4vom2n" path="res://Scenes/Weapons/gun.tscn" id="1_2m13o"]
 [ext_resource type="PackedScene" uid="uid://baxsilv032upy" path="res://Scenes/Weapons/ebow.tscn" id="2_dre7m"]
+[ext_resource type="PackedScene" uid="uid://dwx84w5u5607k" path="res://Scenes/sword.tscn" id="3_umih5"]
 
 [node name="weapon_system" type="Node2D" unique_id=1502795816]
 
@@ -15,3 +16,6 @@ knockback_force = 400.0
 [node name="EBow" parent="Ranged" unique_id=32642185 instance=ExtResource("2_dre7m")]
 
 [node name="Melee" type="Node2D" parent="." unique_id=1226743658]
+
+[node name="Sword" parent="Melee" unique_id=1914870575 instance=ExtResource("3_umih5")]
+attack_speed = 10.0

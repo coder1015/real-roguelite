@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://boo4w7c0betvr"]
 
 [ext_resource type="Script" uid="uid://cx8mdgvtjcpl6" path="res://Scripts/gun.gd" id="1_oqrbh"]
-[ext_resource type="Texture2D" uid="uid://b16l53fxhk8gu" path="res://Assets/art/Gun/Lazer gun.png" id="2_oqrbh"]
+[ext_resource type="Texture2D" uid="uid://b16l53fxhk8gu" path="res://Assets/art/WeaponAssets/Gun/Lazer gun.png" id="2_oqrbh"]
 
 [node name="Gun" type="Node2D" unique_id=317674117]
 script = ExtResource("1_oqrbh")
