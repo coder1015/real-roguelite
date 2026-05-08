@@ -18,4 +18,5 @@ func show_coords(text):
 func update_hp(hp: int) -> void:
 	$PlayerHP.text = "HP: " + str(hp)
 	
-	
+func update_xp(xp: int) -> void:
+	$PlayerXP.text = "XP: " + str(xp)

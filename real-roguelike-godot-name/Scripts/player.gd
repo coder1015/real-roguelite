@@ -14,6 +14,8 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	get_parent().get_node("HUD").update_hp(hp)
+	get_parent().get_node("HUD").update_xp(xp)
+
 	hide()
 	$weapon_system/Ranged/Gun.hide()  # hide all weapons first
 	set_weapon($weapon_system/Ranged/EBow)
