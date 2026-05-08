@@ -11,6 +11,11 @@ const MIN_BIOME_SIZE = 50
 var temp_noise = FastNoiseLite.new()
 var moisture_noise = FastNoiseLite.new()
 
+# Mob Spwaning
+const CLUSTER_COUNT = 40       # how many clusters across the whole map
+const CLUSTER_RADIUS = 3       # how many tiles wide each cluster is
+const MIN_SPAWN_DIST = 10      # minimum tiles away from world center (0,0) to spawn
+
 # Ground Tiles
 const TILE_GRASS = Vector2i(0, 0)
 const TILE_SAND  = Vector2i(0, 4)
@@ -61,6 +66,7 @@ func _ready() -> void:
 	place_obstacles()
 	place_borders()
 	generate_borders()
+	place_enemies()
 
 
 func setup_noise():
@@ -183,7 +189,7 @@ func place_obstacles():
 			elif biome == TILE_GRASS:
 				if roll < 0.05:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_ROCK)
-				elif roll < 0.05:
+				elif roll < 0.10:
 					obstacles_layer.set_cell(cell, SOURCE_ID, OBST_TREE)
 
 
@@ -226,6 +232,66 @@ func remove_small_regions():
 				var replacement = get_dominant_tile(neighbor_counts)
 				for cell in region:
 					tile_map[cell] = replacement
+
+
+func place_enemies():
+	var clusters_placed = 0
+	var attempts = 0
+	var max_attempts = CLUSTER_COUNT * 10
+	
+	while clusters_placed < CLUSTER_COUNT and attempts < max_attempts:
+		attempts += 1
+		
+		# Pick a random tile in the world
+		var cx = randi_range(0, Globals.WORLD_WIDTH - 1)
+		var cy = randi_range(0, Globals.WORLD_HEIGHT - 1)
+		var coord = Vector2i(cx, cy)
+		
+		# Skip if too close to center where player spawns
+		var world_center = Vector2(Globals.WORLD_WIDTH / 2, Globals.WORLD_HEIGHT / 2)
+		var dist = Vector2(cx, cy).distance_to(world_center)
+		var max_dist = world_center.length()
+		
+		if dist < MIN_SPAWN_DIST:
+			continue
+		if get_foreign_dirs(cx, cy).size() > 0:
+			continue
+		
+		# Get biome and check it has an enemy assigned
+		var biome = tile_map[coord]
+		if not Globals.BIOME_ENEMIES.has(biome):
+			continue
+		
+		# Scale cluster size based on distance from center
+		var t = clamp(dist / max_dist, 0.0, 1.0)
+		var radius = int(lerp(2.0, 6.0, t))
+		var enemy_count = int(lerp(2.0, 8.0, t))
+		
+		var scene_path = Globals.BIOME_ENEMIES[biome]
+		var enemy_scene = load(scene_path)
+		
+		# Spawn enemies around the cluster center
+		for i in enemy_count:
+			var offset_x = randi_range(-radius, radius)
+			var offset_y = randi_range(-radius, radius)
+			var spawn_coord = Vector2i(cx + offset_x, cy + offset_y)
+			
+			# Validate spawn tile
+			if not tile_map.has(spawn_coord):
+				continue
+			if tile_map[spawn_coord] != biome:
+				continue
+			if get_foreign_dirs(spawn_coord.x, spawn_coord.y).size() > 0:
+				continue
+			
+			var enemy = enemy_scene.instantiate()
+			enemy.position = Vector2(
+				(spawn_coord.x - Globals.WORLD_WIDTH / 2) * Globals.TILE_SIZE + Globals.TILE_SIZE / 2,
+				(spawn_coord.y - Globals.WORLD_HEIGHT / 2) * Globals.TILE_SIZE + Globals.TILE_SIZE / 2
+			)
+			get_parent().add_child.call_deferred(enemy)
+		
+		clusters_placed += 1
 
 
 func generate_borders():
