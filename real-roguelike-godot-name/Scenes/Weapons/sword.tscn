@@ -1,9 +1,90 @@
-[gd_scene format=3 uid="uid://cam7yl8kc2si7"]
+[gd_scene format=3 uid="uid://dwx84w5u5607k"]
 
-[node name="Sword" type="Node2D" unique_id=452214232]
+[ext_resource type="Script" uid="uid://58jroirv73b4" path="res://Scripts/sword.gd" id="1_v4uo3"]
+[ext_resource type="PackedScene" uid="uid://5jjb452jacd5" path="res://Scenes/Weapons/slash_projectile.tscn" id="2_2yne2"]
+[ext_resource type="Texture2D" uid="uid://b3wp8v5avx8am" path="res://Assets/art/WeaponAssets/Sword/Sword.png" id="2_x3ol0"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048202284]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wdhb"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(0, 4096, 2048, 2048)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1318120320]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6wag"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(0, 0, 2048, 2048)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1908721759]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb2vl"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(2048, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j4cb"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(4096, 0, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksptp"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(0, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uo8h"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(2048, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gx3d"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(4096, 2048, 2048, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_641iy"]
+atlas = ExtResource("2_x3ol0")
+region = Rect2(0, 4096, 2048, 2048)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juuhp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wdhb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6wag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb2vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j4cb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksptp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uo8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gx3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_641iy")
+}],
+"loop": true,
+"name": &"reload",
+"speed": 5.0
+}]
+
+[node name="Sword" type="Node2D" unique_id=1914870575]
+script = ExtResource("1_v4uo3")
+damage = 15
+attack_speed = 5.0
+projectile_scene = ExtResource("2_2yne2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1862255949]
+position = Vector2(63.999996, -2.2737368e-13)
+rotation = 1.5707964
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_juuhp")
+animation = &"idle"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1411217567]
+position = Vector2(100, 0)

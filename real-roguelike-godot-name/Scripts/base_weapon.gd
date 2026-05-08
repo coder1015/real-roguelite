@@ -1,12 +1,11 @@
 class_name BaseWeapon
 extends Node2D
 
-const PROJECTILE = preload("res://Scenes/Weapons/projectile.tscn")
-
 @export var weapon_label: String = "Weapon"
 @export var damage: int = 20
 @export var attack_speed: float = 1.0
 @export var knockback_force: float = 200.0
+@export var projectile_scene: PackedScene
 
 var _cooldown: float = 0.0
 
@@ -24,7 +23,7 @@ func _do_attack(target_pos: Vector2) -> void:
 	push_error(weapon_label + ": _do_attack() not implemented")
 
 func _spawn_projectile(spawn_pos: Vector2, dir: Vector2, speed: float = 300.0, lifetime: float = 0.0, pierce: int = 0, proj_scale: Vector2 = Vector2.ONE) -> void:
-	var p = PROJECTILE.instantiate()
+	var p = projectile_scene.instantiate()
 	p.speed = speed
 	p.lifetime = lifetime
 	p.pierce = pierce
