@@ -7,7 +7,7 @@ var hp: int = 100
 var invincible: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var current_weapon: BaseWeapon = null
-
+var xp: int = 0
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -80,6 +80,10 @@ func set_weapon(weapon: BaseWeapon) -> void:
 func die():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
+func gain_xp(amount: int) -> void:
+	xp += amount
+	get_parent().get_node("HUD").update_xp(xp)
+
 func _animate():
 	if velocity.length() > 0:
 		$AnimatedSprite2D.play()
@@ -100,4 +104,4 @@ func _animate():
 
 
 func _on_i_frame_timer_timeout() -> void:
-	invincible = false # Replace with function body.
+	invincible = false

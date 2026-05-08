@@ -7,6 +7,11 @@ var player = null
 var health = 100
 var knockback_velocity: Vector2 = Vector2.ZERO
 var damage_cooldown = false
+var xp_value: int = 10
+
+
+signal xp_dropped(amount: int)
+
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -35,11 +40,13 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 		die()
 
 func die() -> void:
+	emit_signal("xp_dropped", xp_value)
 	queue_free()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
+	xp_dropped.connect(player.gain_xp)
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
