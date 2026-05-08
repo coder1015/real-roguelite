@@ -17,6 +17,7 @@ func _ready() -> void:
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	get_parent().get_node("HUD").update_hp(hp)
 	get_parent().get_node("HUD").update_xp(xp)
+	get_parent().get_node("HUD").update_level(level)
 	hide()
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
