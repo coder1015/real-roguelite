@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmthu6wqhp52l"
-path="res://.godot/imported/ZbowIdle.png-65c6bbd435acabf94aca5db2a4e2d3f0.ctex"
+uid="uid://cic5ra8rjc8rb"
+path="res://.godot/imported/placeholdergun.png-0f478768d5964483163435c5a98ec0f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/ZbowIdle.png"
-dest_files=["res://.godot/imported/ZbowIdle.png-65c6bbd435acabf94aca5db2a4e2d3f0.ctex"]
+source_file="res://Assets/art/WeaponAssets/Gun/placeholdergun.png"
+dest_files=["res://.godot/imported/placeholdergun.png-0f478768d5964483163435c5a98ec0f9.ctex"]
 
 [params]
 

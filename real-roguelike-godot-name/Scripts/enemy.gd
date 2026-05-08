@@ -33,7 +33,7 @@ func _physics_process(delta):
 	check_player_overlap()
 
 func take_damage(damage: int, knockback: Vector2) -> void:
-	print("enemy take_damage - knockback: ", knockback)
+	#print("enemy take_damage - knockback: ", knockback)
 	health -= damage
 	knockback_velocity += knockback
 	if health <= 0:

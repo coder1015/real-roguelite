@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k66sm1sjuv0o"
-path="res://.godot/imported/projectile.png-f7e459c2c2aa1d934c453fab25c16fcf.ctex"
+uid="uid://bm55v7tq5y1w2"
+path="res://.godot/imported/reloadZbow.png-208c28ac68ed5b9d97c99d158b8043a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/art/projectile.png"
-dest_files=["res://.godot/imported/projectile.png-f7e459c2c2aa1d934c453fab25c16fcf.ctex"]
+source_file="res://Assets/art/WeaponAssets/EBow/reloadZbow.png"
+dest_files=["res://.godot/imported/reloadZbow.png-208c28ac68ed5b9d97c99d158b8043a2.ctex"]
 
 [params]
 

@@ -20,8 +20,7 @@ func _ready() -> void:
 	get_parent().get_node("HUD").update_level(level)
 
 	hide()
-	$weapon_system/Ranged/Gun.hide()  # hide all weapons first
-	set_weapon($weapon_system/Ranged/EBow)
+	set_weapon($weapon_system/Melee/Sword)
 	
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
 	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE

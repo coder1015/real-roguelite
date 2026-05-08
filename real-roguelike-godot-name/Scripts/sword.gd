@@ -1,7 +1,5 @@
-class_name Gun
+class_name Sword
 extends BaseWeapon
-
-@onready var muzzle: Marker2D = $Marker2D
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -9,5 +7,6 @@ func _process(delta: float) -> void:
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 
 func _do_attack(target_pos: Vector2) -> void:
-	var dir = (target_pos - muzzle.global_position)
-	_spawn_projectile(muzzle.global_position, dir)
+	var dir = (target_pos - global_position).normalized()
+
+	_spawn_projectile(global_position, dir, 80.0, 0.25, 1, Vector2(2.0, 2.5))
