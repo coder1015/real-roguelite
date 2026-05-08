@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 	var xpos = str(round(position.x))
 	var ypos = str(round(position.y))
 	$HUD.show_coords(xpos + ", " + ypos)
+	$Player.level_up()
 
 
 func new_game():

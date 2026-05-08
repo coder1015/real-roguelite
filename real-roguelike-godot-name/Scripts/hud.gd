@@ -20,3 +20,6 @@ func update_hp(hp: int) -> void:
 	
 func update_xp(xp: int) -> void:
 	$PlayerXP.text = "XP: " + str(xp)
+	
+func update_level(level:int) -> void:
+	$PlayerLevel.text = "Level: " + str(level)
