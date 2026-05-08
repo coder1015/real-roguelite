@@ -18,8 +18,10 @@ func _ready() -> void:
 	get_parent().get_node("HUD").update_hp(hp)
 	get_parent().get_node("HUD").update_xp(xp)
 	get_parent().get_node("HUD").update_level(level)
-
 	hide()
+	$weapon_system/Ranged/Gun.hide()
+	$weapon_system/Ranged/EBow.hide()
+	$weapon_system/Melee/Sword.hide()
 	set_weapon($weapon_system/Melee/Sword)
 	
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE

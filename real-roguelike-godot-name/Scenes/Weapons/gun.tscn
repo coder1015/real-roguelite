@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cx8mdgvtjcpl6" path="res://Scripts/gun.gd" id="1_oqrbh"]
 [ext_resource type="Texture2D" uid="uid://b16l53fxhk8gu" path="res://Assets/art/WeaponAssets/Gun/Lazer gun.png" id="2_oqrbh"]
+[ext_resource type="PackedScene" uid="uid://dhjnwcoww4sq6" path="res://Scenes/Weapons/projectile.tscn" id="2_ut0fn"]
 
 [node name="Gun" type="Node2D" unique_id=317674117]
 script = ExtResource("1_oqrbh")
+projectile_scene = ExtResource("2_ut0fn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1558953562]
 position = Vector2(14, -6)

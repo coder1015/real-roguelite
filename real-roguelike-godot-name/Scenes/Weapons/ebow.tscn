@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://baxsilv032upy"]
 
 [ext_resource type="Script" uid="uid://cfsgr7h3v1a3b" path="res://Scripts/ebow.gd" id="1_ue0cn"]
+[ext_resource type="PackedScene" uid="uid://dhjnwcoww4sq6" path="res://Scenes/Weapons/projectile.tscn" id="2_pw8gy"]
 [ext_resource type="Texture2D" uid="uid://cmthu6wqhp52l" path="res://Assets/art/WeaponAssets/EBow/ZbowIdle.png" id="2_v28bv"]
 [ext_resource type="Texture2D" uid="uid://bm55v7tq5y1w2" path="res://Assets/art/WeaponAssets/EBow/reloadZbow.png" id="3_pw8gy"]
 
@@ -90,6 +91,7 @@ animations = [{
 [node name="EBow" type="Node2D" unique_id=32642185]
 script = ExtResource("1_ue0cn")
 attack_speed = 0.7
+projectile_scene = ExtResource("2_pw8gy")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1409958572]
 position = Vector2(45, 0)
