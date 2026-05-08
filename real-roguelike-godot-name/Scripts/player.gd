@@ -17,6 +17,7 @@ func _ready() -> void:
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
 	get_parent().get_node("HUD").update_hp(hp)
 	get_parent().get_node("HUD").update_xp(xp)
+	get_parent().get_node("HUD").update_level(level)
 
 	hide()
 	$weapon_system/Ranged/Gun.hide()  # hide all weapons first
@@ -87,6 +88,16 @@ func die():
 func gain_xp(amount: int) -> void:
 	xp += amount
 	get_parent().get_node("HUD").update_xp(xp)
+
+
+func level_up():
+	if xp >= xp_to_next_level and level < 7:
+		level += 1
+		xp = xp - xp_to_next_level
+		xp_to_next_level = 100 * level
+		get_parent().get_node("HUD").update_level(level)
+		get_parent().get_node("HUD").update_xp(xp)
+
 
 
 func _animate():
