@@ -4,6 +4,7 @@ extends BaseWeapon
 @onready var muzzle: Marker2D = $Marker2D
 
 func _ready() -> void:
+	super._ready()
 	$AnimatedSprite2D.play("idle")
 
 func _process(delta: float) -> void:

@@ -4,7 +4,7 @@ extends CharacterBody2D
 var speed = 60
 var player_chase = false
 var player = null
-var health = 100
+var health: float = 100.0
 var knockback_velocity: Vector2 = Vector2.ZERO
 var damage_cooldown = false
 var xp_value: int = 10
@@ -32,9 +32,10 @@ func _physics_process(delta):
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
 	check_player_overlap()
 
-func take_damage(damage: int, knockback: Vector2) -> void:
+func take_damage(damage: float, knockback: Vector2) -> void:
 	#print("enemy take_damage - knockback: ", knockback)
 	health -= damage
+	print("Enemy remaining health: " + str(health))
 	knockback_velocity += knockback
 	if health <= 0:
 		die()
@@ -52,7 +53,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
 
-func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
+func _on_hurtbox_hit_taken(damage: float, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
 
 func check_player_overlap():

@@ -15,8 +15,9 @@ func show_coords(text):
 	$Coords.show()
 
 
-func update_hp(hp: int) -> void:
-	$PlayerHP.text = "HP: " + str(hp)
+func update_hp(hp: float) -> void:
+	var simple_hp = round(10.0*hp)/10.0
+	$PlayerHP.text = "HP: " + str(simple_hp)
 	
 func update_xp(xp: int) -> void:
 	$PlayerXP.text = "XP: " + str(xp)

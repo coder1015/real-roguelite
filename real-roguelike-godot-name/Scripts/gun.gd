@@ -3,6 +3,9 @@ extends BaseWeapon
 
 @onready var muzzle: Marker2D = $Marker2D
 
+func _ready() -> void:
+	super._ready()
+
 func _process(delta: float) -> void:
 	super._process(delta)
 	look_at(get_global_mouse_position())

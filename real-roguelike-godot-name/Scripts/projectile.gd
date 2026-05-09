@@ -7,6 +7,7 @@ var direction: Vector2 = Vector2.RIGHT
 var _lifetime_elapsed: float = 0.0
 var _hits: int = 0
 
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	$AnimatedSprite2D.play()
