@@ -238,7 +238,7 @@ func place_enemies():
 	
 	var clusters_placed = 0
 	var attempts = 0
-	var max_attempts = CLUSTER_COUNT * 10
+	var max_attempts = CLUSTER_COUNT * 50
 	
 	while clusters_placed < CLUSTER_COUNT and attempts < max_attempts:
 		attempts += 1
