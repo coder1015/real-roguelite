@@ -11,15 +11,26 @@ var level: int = 1
 var xp_to_next_level: int = 100
 
 # Base Stats
-var max_hp: float = 100.0 # Flat max hp, default = 100.0
-var defense = 0 # Gets converted into a multiplicative and additive damage reduction, default = 0
-var speed = 200 # Flat speed, default = 200
-var attack = 0 # Additive to weapon base damage, default = 0
-var crit_rate: float = 0.0 # Chance to crit from 0.0 to 1.0, success is a time 3 multiplier to final damage, default = 0.0
-var auto_damage: float = 1.0 # Ranges from 1.0 to 2.0, multiplicative damage increase, default = 1.0
-var auto_speed: float = 0.0 # Additive to the cooldown calculation, default = 0.0
-var proj_speed: float = 0.0 # Additive to base speed in the _spawn_projectile method, default = 0.0
-var pierce: int = 0 # Additive to base pierce in the _spawn_projectile method, default = 0
+const BASE_MAX_HP: float = 100.0
+const BASE_DEFENSE = 0
+const BASE_SPEED = 200
+const BASE_ATTACK = 0
+const BASE_CRIT_RATE: float = 0.0
+const BASE_AUTO_DAMAGE: float = 1.0
+const BASE_AUTO_SPEED: float = 0.0
+const BASE_PROJ_SPEED: float = 0.0
+const BASE_PIERCE: int = 0
+
+# Current Stat Variables
+var max_hp: float = BASE_MAX_HP             # Flat max hp, default = 100.0
+var defense = BASE_DEFENSE                  # Gets converted into a multiplicative and additive damage reduction, default = 0
+var speed = BASE_SPEED                      # Flat speed, default = 200
+var attack = BASE_ATTACK                    # Additive to weapon base damage, default = 0
+var crit_rate: float = BASE_CRIT_RATE       # Chance to crit from 0.0 to 1.0, success is a time 3 multiplier to final damage, default = 0.0
+var auto_damage: float = BASE_AUTO_DAMAGE   # Ranges from 1.0 to 2.0, multiplicative damage increase, default = 1.0
+var auto_speed: float = BASE_AUTO_SPEED     # Additive to the cooldown calculation, default = 0.0
+var proj_speed: float = BASE_PROJ_SPEED     # Additive to base speed in the _spawn_projectile method, default = 0.0
+var pierce: int = BASE_PIERCE               # Additive to base pierce in the _spawn_projectile method, default = 0
 # Implement below stats later
 var ability_damage
 var cooldown
@@ -41,7 +52,7 @@ func _ready() -> void:
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
-	set_weapon($weapon_system/Ranged/EBow)
+	set_weapon($weapon_system/Melee/Sword)
 	
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
 	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
@@ -88,6 +99,15 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
 
 
+func _input(event):
+	if event.is_action_pressed("open_armor_menu"):
+		# Don't open if something else is already paused
+		if get_tree().paused:
+			return
+		var menu = load("res://Scenes/armor_menu.tscn").instantiate()
+		get_tree().get_root().add_child(menu)
+
+
 func take_damage(damage: int, knockback: Vector2) -> void:
 	if invincible:
 		return
@@ -127,6 +147,20 @@ func level_up():
 		xp_to_next_level = 100 * level
 		get_parent().get_node("HUD").update_level(level)
 		get_parent().get_node("HUD").update_xp(xp)
+
+
+func recalculate_stats():
+	max_hp = BASE_MAX_HP + ArmorManager.get_stat_total("max_hp")
+	defense = BASE_DEFENSE + ArmorManager.get_stat_total("defense")
+	speed = BASE_SPEED + ArmorManager.get_stat_total("speed")
+	attack = BASE_ATTACK + ArmorManager.get_stat_total("attack")
+	crit_rate = BASE_CRIT_RATE + ArmorManager.get_stat_total("crit_rate")
+	auto_damage = BASE_AUTO_DAMAGE + ArmorManager.get_stat_total("auto_damage")
+	auto_speed = BASE_AUTO_SPEED + ArmorManager.get_stat_total("auto_speed")
+	proj_speed = BASE_PROJ_SPEED + ArmorManager.get_stat_total("proj_speed")
+	pierce = BASE_PIERCE + ArmorManager.get_stat_total("pierce")
+	
+	hp = min(hp, max_hp)
 
 
 func _animate():

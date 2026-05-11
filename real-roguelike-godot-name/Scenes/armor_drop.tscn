@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cdelprtp8h85t"]
+
+[ext_resource type="Script" uid="uid://uti4dquxmj84" path="res://Scripts/armor_drop.gd" id="1_tgjgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpak2"]
+size = Vector2(150, 20)
+
+[node name="ArmorDrop" type="Area2D" unique_id=377646103]
+script = ExtResource("1_tgjgc")
+
+[node name="Label" type="Label" parent="." unique_id=688454373]
+offset_left = -75.0
+offset_top = -10.0
+offset_right = -35.0
+offset_bottom = 13.0
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1799111704]
+shape = SubResource("RectangleShape2D_vpak2")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://fnaeqtcw6krn"]
 
 [ext_resource type="Texture2D" uid="uid://cicekm74ei1cw" path="res://Assets/art/Biomes/Biome assets (3).png" id="1_go701"]
-[ext_resource type="Script" uid="uid://d1eph1rocbaj" path="res://Scenes/world_generator.gd" id="3_5a7ea"]
+[ext_resource type="Script" uid="uid://d1eph1rocbaj" path="res://Scripts/world_generator.gd" id="3_5a7ea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5a7ea"]
 texture = ExtResource("1_go701")

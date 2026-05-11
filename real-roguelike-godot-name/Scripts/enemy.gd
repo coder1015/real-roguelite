@@ -41,8 +41,19 @@ func take_damage(damage: float, knockback: Vector2) -> void:
 		die()
 
 func die() -> void:
+	if randf() < Globals.DROP_CHANCE:
+		var armor = ArmorGenerator.generate_armor()
+		spawn_armor_drop(armor)
+		
 	emit_signal("xp_dropped", xp_value)
 	queue_free()
+
+func spawn_armor_drop(armor: Dictionary):
+	var drop_scene = load("res://Scenes/armor_drop.tscn")
+	var drop = drop_scene.instantiate()
+	drop.position = position  # spawn at enemy's position
+	drop.armor_data = armor        # pass the armor data to the drop scene
+	get_parent().add_child.call_deferred(drop)
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body

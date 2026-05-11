@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://csi68ilfoni0k"]
+
+[ext_resource type="Script" uid="uid://c3x4pep2mflk6" path="res://Scripts/armor_menu.gd" id="1_cyo7n"]
+
+[node name="ArmorMenu" type="Control" unique_id=1867478147]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cyo7n")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=627139744]
+process_mode = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1972721608]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1282393706]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=197234455]
+layout_mode = 2
+
+[node name="HeadSlot" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=666324320]
+layout_mode = 2
+
+[node name="HeadTitle" type="Label" parent="PanelContainer/VBoxContainer/HeadSlot" unique_id=1174721286]
+layout_mode = 2
+
+[node name="HeadStats" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HeadSlot" unique_id=476181150]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=1512580071]
+layout_mode = 2
+
+[node name="ChestSlot" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1710509548]
+layout_mode = 2
+
+[node name="ChestTitle" type="Label" parent="PanelContainer/VBoxContainer/ChestSlot" unique_id=1532457237]
+layout_mode = 2
+
+[node name="ChestStats" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ChestSlot" unique_id=1040125989]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=1306233265]
+layout_mode = 2
+
+[node name="LegsSlot" type="VBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=583239955]
+layout_mode = 2
+
+[node name="LegsTitle" type="Label" parent="PanelContainer/VBoxContainer/LegsSlot" unique_id=1913050842]
+layout_mode = 2
+
+[node name="LegsStats" type="VBoxContainer" parent="PanelContainer/VBoxContainer/LegsSlot" unique_id=832570592]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=1977497984]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=528351440]
+layout_mode = 2
+text = "Close"
