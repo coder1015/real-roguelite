@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvbbsapode1sk" path="res://Assets/art/Test knight/Test knight walking sprite sheet.png" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://c1446xttna5p6" path="res://Scripts/hurtbox.gd" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://sqyvb2so7wxw" path="res://Scenes/weapon_system.tscn" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://x0p6t86b7j7d" path="res://Scenes/input_handler.gd" id="5_x3wgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_onrkg")
@@ -109,5 +110,8 @@ shape = SubResource("CircleShape2D_vgqql")
 one_shot = true
 
 [node name="weapon_system" parent="." unique_id=206156080 instance=ExtResource("5_fkybt")]
+
+[node name="InputHandler" type="Node" parent="." unique_id=1205416300]
+script = ExtResource("5_x3wgy")
 
 [connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

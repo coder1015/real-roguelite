@@ -40,6 +40,7 @@ var time_cost_reduction
 # Lifesteal? Probably not cause would be hard to balance and not really add much to the game
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_to_group("player")
 	hp = max_hp
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -97,15 +98,6 @@ func start(pos):
 
 func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 	take_damage(damage, knockback)
-
-
-func _input(event):
-	if event.is_action_pressed("open_armor_menu"):
-		# Don't open if something else is already paused
-		if get_tree().paused:
-			return
-		var menu = load("res://Scenes/armor_menu.tscn").instantiate()
-		get_tree().get_root().add_child(menu)
 
 
 func take_damage(damage: int, knockback: Vector2) -> void:

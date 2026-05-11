@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c3x4pep2mflk6" path="res://Scripts/armor_menu.gd" id="1_cyo7n"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_cyo7n"]
+device = -1
+keycode = 67
+unicode = 99
+
+[sub_resource type="Shortcut" id="Shortcut_3ibo6"]
+events = [SubResource("InputEventKey_cyo7n")]
+
 [node name="ArmorMenu" type="Control" unique_id=1867478147]
 process_mode = 3
 layout_mode = 3
@@ -65,4 +73,5 @@ layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=528351440]
 layout_mode = 2
+shortcut = SubResource("Shortcut_3ibo6")
 text = "Close"

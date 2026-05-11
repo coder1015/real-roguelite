@@ -1,14 +1,19 @@
 extends Control
 
 var player
+var can_close = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("armor_menu")
+	Globals.armor_menu_open = true
 	player = get_tree().get_first_node_in_group("player")
-	$PanelContainer/VBoxContainer/CloseButton.pressed.connect(_on_close_pressed)
 	get_tree().paused = true
+	$PanelContainer/VBoxContainer/CloseButton.pressed.connect(_on_close_pressed)
 	display_all_slots()
 	center_panel.call_deferred()
+	await get_tree().process_frame
+	can_close = true
 
 
 func center_panel():
@@ -54,8 +59,18 @@ func display_slot(slot: String, title_label: Label, stats_container: VBoxContain
 
 
 func _on_close_pressed():
+	if not can_close:
+		return
+	Globals.armor_menu_open = false
 	get_tree().paused = false
 	queue_free()
+
+
+#func _input(event):
+	#if event.is_action_pressed("open_armor_menu"):
+		#print("menu received C key")
+		#get_viewport().set_input_as_handled()
+		#_on_close_pressed()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
