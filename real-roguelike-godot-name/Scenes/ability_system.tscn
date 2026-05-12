@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cx3m08pwi3o17"]
+
+[ext_resource type="Script" uid="uid://blco3xah8s4n1" path="res://Scripts/SwordAbilities/big_slash.gd" id="1_8gr4k"]
+[ext_resource type="Script" uid="uid://xr3xevcm7wgq" path="res://Scripts/SwordAbilities/slash_dash.gd" id="2_nfwpv"]
+[ext_resource type="Script" uid="uid://ouuo2cka2h3j" path="res://Scripts/SwordAbilities/razor_cuts.gd" id="3_115fw"]
+
+[node name="ability_system" type="Node2D" unique_id=447382601]
+
+[node name="GunAbilities" type="Node2D" parent="." unique_id=982958864]
+
+[node name="SwordAbilities" type="Node2D" parent="." unique_id=260554538]
+
+[node name="BigSlash" type="Node2D" parent="SwordAbilities" unique_id=770399416]
+script = ExtResource("1_8gr4k")
+ability_name = null
+resource_cost = null
+cooldown_time = null
+
+[node name="SlashDash" type="Node2D" parent="SwordAbilities" unique_id=1701012919]
+script = ExtResource("2_nfwpv")
+dash_speed = null
+dash_duration = null
+ability_name = null
+resource_cost = null
+cooldown_time = null
+
+[node name="RazorCuts" type="Node2D" parent="SwordAbilities" unique_id=23938085]
+script = ExtResource("3_115fw")
+projectile_count = null
+spread_angle = null
+ability_name = null
+resource_cost = null
+cooldown_time = null

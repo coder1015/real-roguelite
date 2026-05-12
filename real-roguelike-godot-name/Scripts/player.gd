@@ -9,6 +9,8 @@ var current_weapon: BaseWeapon = null
 var xp: int = 0
 var level: int = 1
 var xp_to_next_level: int = 100
+var resource: int = 100
+var max_resource: int = 100
 
 # Base Stats
 const BASE_MAX_HP: float = 100.0
@@ -49,12 +51,17 @@ func _ready() -> void:
 	get_parent().get_node("HUD").update_hp(hp)
 	get_parent().get_node("HUD").update_xp(xp)
 	get_parent().get_node("HUD").update_level(level)
+	get_parent().get_node("HUD").update_resource(resource)
 	hide()
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
 	set_weapon($weapon_system/Melee/Sword)
 	
+	$ability_system/SwordAbilities/BigSlash.upgrade()
+	$ability_system/SwordAbilities/SlashDash.upgrade()
+	$ability_system/SwordAbilities/RazorCuts.upgrade()
+
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
 	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
 	
@@ -75,6 +82,13 @@ func _physics_process(delta: float) -> void:
 		input_velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		input_velocity.y -= 1	
+	
+	if Input.is_action_just_pressed("ability_1"):
+		$ability_system/SwordAbilities/BigSlash.activate()
+	if Input.is_action_just_pressed("ability_2"):
+		$ability_system/SwordAbilities/SlashDash.activate()
+	if Input.is_action_just_pressed("ability_3"):
+		$ability_system/SwordAbilities/RazorCuts.activate()
 	
 	if input_velocity.length() > 0:
 		input_velocity = input_velocity.normalized() * speed

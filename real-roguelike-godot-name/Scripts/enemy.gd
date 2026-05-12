@@ -35,7 +35,7 @@ func _physics_process(delta):
 func take_damage(damage: float, knockback: Vector2) -> void:
 	#print("enemy take_damage - knockback: ", knockback)
 	health -= damage
-	print("Enemy remaining health: " + str(health))
+	#print("Enemy remaining health: " + str(health))
 	knockback_velocity += knockback
 	if health <= 0:
 		die()

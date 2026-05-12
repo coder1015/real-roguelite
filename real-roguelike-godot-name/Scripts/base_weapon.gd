@@ -48,5 +48,5 @@ func _spawn_projectile(spawn_pos: Vector2, dir: Vector2, speed: float = 300.0, l
 		# Crit fail
 		hitbox.damage = (damage + player.attack) * player.auto_damage
 		
-	print("Damage dealt: " + str(hitbox.damage))
+	#print("Damage dealt: " + str(hitbox.damage))
 	hitbox.knockback_direction = dir.normalized() * knockback_force

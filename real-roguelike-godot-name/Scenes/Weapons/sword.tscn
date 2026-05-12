@@ -86,7 +86,7 @@ rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_juuhp")
 animation = &"reload"
-frame_progress = 0.03806814
+frame_progress = 0.30917856
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1411217567]
 position = Vector2(100, 0)

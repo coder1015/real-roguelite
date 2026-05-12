@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 func _do_attack(target_pos: Vector2) -> void:
 	$AnimatedSprite2D.play("reload")
 	var dir = (target_pos - global_position).normalized()
-	_spawn_projectile(tip.global_position, dir, 0, 0.5, 1000, Vector2(1, .5))
+	_spawn_projectile(tip.global_position, dir, 0, 0.5, 1000, Vector2(1.25, .75))

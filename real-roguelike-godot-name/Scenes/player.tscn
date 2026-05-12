@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c1446xttna5p6" path="res://Scripts/hurtbox.gd" id="4_vgqql"]
 [ext_resource type="PackedScene" uid="uid://sqyvb2so7wxw" path="res://Scenes/weapon_system.tscn" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://x0p6t86b7j7d" path="res://Scripts/input_handler.gd" id="5_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://cx3m08pwi3o17" path="res://Scenes/ability_system.tscn" id="6_x3wgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_onrkg")
@@ -113,5 +114,7 @@ one_shot = true
 
 [node name="InputHandler" type="Node" parent="." unique_id=1205416300]
 script = ExtResource("5_x3wgy")
+
+[node name="ability_system" parent="." unique_id=447382601 instance=ExtResource("6_x3wgy")]
 
 [connection signal="timeout" from="IFrameTimer" to="." method="_on_i_frame_timer_timeout"]

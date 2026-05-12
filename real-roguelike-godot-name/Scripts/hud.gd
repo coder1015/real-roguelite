@@ -24,3 +24,6 @@ func update_xp(xp: int) -> void:
 	
 func update_level(level:int) -> void:
 	$PlayerLevel.text = "Level: " + str(level)
+
+func update_resource(resource:int) -> void:
+	$PlayerResource.text = "Resource: " + str(resource)
