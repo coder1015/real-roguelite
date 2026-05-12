@@ -70,21 +70,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"reload",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Sword" type="Node2D" unique_id=1914870575]
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_v4uo3")
 damage = 15
-attack_speed = 5.0
+attack_speed = 1.4
 projectile_scene = ExtResource("2_2yne2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1862255949]
-position = Vector2(63.999996, -2.2737368e-13)
+position = Vector2(90.00001, 0)
 rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_juuhp")
-animation = &"idle"
+animation = &"reload"
+frame_progress = 0.03806814
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1411217567]
 position = Vector2(100, 0)
