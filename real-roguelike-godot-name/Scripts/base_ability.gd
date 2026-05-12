@@ -12,10 +12,14 @@ var player: CharacterBody2D
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
+func _process(delta: float) -> void:
+	if _cooldown > 0:
+		_cooldown -= delta
+
 func activate() -> void:
 	if not unlocked:
 		return
-	 if _cooldown > 0:
+	if _cooldown > 0:
 		return
 	if player.resource < resource_cost:
 		return

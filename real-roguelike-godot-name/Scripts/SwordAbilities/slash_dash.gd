@@ -13,6 +13,7 @@ func _ready() -> void:
 	cooldown_time = 3.0
 	
 func _process(delta: float) -> void:
+	super._process(delta)
 	if _dashing:
 		_do_slash()
 		player.knockback_velocity = _dash_dir * dash_speed

@@ -117,11 +117,11 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 func take_damage(damage: int, knockback: Vector2) -> void:
 	if invincible:
 		return
-	print("take_damage called with: ", damage)
+	#print("take_damage called with: ", damage)
 	var damage_taken = max(1.0, damage * (1.0 / (1.0 + (1.0/300.0)*defense)) - (1.0/100.0)*defense)
 	hp -= damage_taken
-	print("damage taken: ", damage_taken)
-	print("hp: ", hp)
+	#print("damage taken: ", damage_taken)
+	#print("hp: ", hp)
 	knockback_velocity = knockback
 	invincible = true
 	$IFrameTimer.start(0.6)
@@ -169,7 +169,7 @@ func recalculate_stats(old_max_hp):
 	pierce = BASE_PIERCE + ArmorManager.get_stat_total("pierce")
 	
 	hp = min(hp + (max_hp - old_max_hp), max_hp)
-	print("Auto damage: " + str(auto_damage))
+	#print("Auto damage: " + str(auto_damage))
 	get_parent().get_node("HUD").update_hp(hp)
 
 
