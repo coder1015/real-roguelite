@@ -8,16 +8,17 @@ var equipped = {
 
 
 func equip(armor: Dictionary):
+	var player = get_tree().get_first_node_in_group("player")
+	var old_max_hp = player.max_hp
 	# Equips armor in that slot, old armor disappears
 	equipped[armor.type] = armor
 	
 	# Tell player to recalculate stats
-	var player = get_tree().get_first_node_in_group("player")
 	if player:
-		player.recalculate_stats()
+		player.recalculate_stats(old_max_hp)
 
 
-func get_stat_total(stat_name: String) -> int:
+func get_stat_total(stat_name: String) -> float:
 	# Adds up a given stat across all three equipped pieces
 	var total = 0
 	for slot in equipped:

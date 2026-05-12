@@ -22,7 +22,6 @@ offset_right = 102.0
 offset_bottom = 88.0
 
 [node name="PlayerLevel" type="Label" parent="." unique_id=598677493]
-visible = false
 offset_top = 89.0
 offset_right = 40.0
 offset_bottom = 112.0

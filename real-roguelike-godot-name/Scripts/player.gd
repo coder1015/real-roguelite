@@ -141,7 +141,7 @@ func level_up():
 		get_parent().get_node("HUD").update_xp(xp)
 
 
-func recalculate_stats():
+func recalculate_stats(old_max_hp):
 	max_hp = BASE_MAX_HP + ArmorManager.get_stat_total("max_hp")
 	defense = BASE_DEFENSE + ArmorManager.get_stat_total("defense")
 	speed = BASE_SPEED + ArmorManager.get_stat_total("speed")
@@ -152,7 +152,9 @@ func recalculate_stats():
 	proj_speed = BASE_PROJ_SPEED + ArmorManager.get_stat_total("proj_speed")
 	pierce = BASE_PIERCE + ArmorManager.get_stat_total("pierce")
 	
-	hp = min(hp, max_hp)
+	hp = min(hp + (max_hp - old_max_hp), max_hp)
+	print("Auto damage: " + str(auto_damage))
+	get_parent().get_node("HUD").update_hp(hp)
 
 
 func _animate():

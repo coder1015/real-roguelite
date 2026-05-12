@@ -54,7 +54,10 @@ func display_slot(slot: String, title_label: Label, stats_container: VBoxContain
 	
 	for stat in armor.stats:
 		var label = Label.new()
-		label.text = stat + ": " + str(armor.stats[stat])
+		if armor.stats[stat] is float:
+			label.text = stat + ": " + str(snappedf(armor.stats[stat], 0.01))
+		else:
+			label.text = stat + ": " + str(armor.stats[stat])
 		stats_container.add_child(label)
 
 

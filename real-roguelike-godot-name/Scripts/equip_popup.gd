@@ -27,7 +27,10 @@ func display_new_armor():
 	var stats_container = $PanelContainer/VBoxContainer/HBoxContainer/NewArmorPanel/NewArmorStats
 	for stat in new_armor.stats:
 		var label = Label.new()
-		label.text = stat + ": " + str(new_armor.stats[stat])
+		if new_armor.stats[stat] is float:
+			label.text = stat + ": " + str(snappedf(new_armor.stats[stat], 0.01))
+		else:
+			label.text = stat + ": " + str(new_armor.stats[stat])
 		stats_container.add_child(label)
 
 
@@ -47,7 +50,10 @@ func display_current_armor():
 	
 	for stat in current.stats:
 		var label = Label.new()
-		label.text = stat + ": " + str(current.stats[stat])
+		if current.stats[stat] is float:
+			label.text = stat + ": " + str(snappedf(current.stats[stat], 0.01))
+		else:
+			label.text = stat + ": " + str(current.stats[stat])
 		stats_container.add_child(label)
 
 
@@ -59,6 +65,8 @@ func _on_equip_pressed():
 
 
 func _on_close_pressed():
+	if drop_ref:
+		drop_ref.queue_free()
 	close()
 
 

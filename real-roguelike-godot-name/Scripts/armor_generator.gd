@@ -33,7 +33,11 @@ func roll_stats(rarity: Globals.Rarity) -> Dictionary:
 	for i in stat_count:
 		var stat_name = all_stats[i]
 		var range = Globals.STATS[stat_name][rarity]
-		result[stat_name] = randi_range(range[0], range[1])
+		
+		if range[0] is float or range[1] is float:
+			result[stat_name] = randf_range(range[0], range[1])
+		else:
+			result[stat_name] = randi_range(range[0], range[1])
 		
 	return result
 

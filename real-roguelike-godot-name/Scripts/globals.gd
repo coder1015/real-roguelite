@@ -42,17 +42,17 @@ const EPIC_CHANCE = 0.05  # 5% epic
 
 const ARMOR_TYPES = ["Head", "Chest", "Legs"]
 
-# 9 placeholder stats with ranges per rarity [min, max]
+# 9  stats with ranges per rarity [min, max]
 const STATS = {
-	"max_hp": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"defense": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"speed": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"attack": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"crit_rate": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"auto_damage": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"auto_speed": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"proj_speed": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
-	"pierce": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 20]  },
+	"max_hp": { Rarity.COMMON: [5, 20],   Rarity.RARE: [18, 32],  Rarity.EPIC: [30, 50]  },
+	"defense": { Rarity.COMMON: [5, 20],   Rarity.RARE: [18, 32],  Rarity.EPIC: [30, 50]  },
+	"speed": { Rarity.COMMON: [10, 35],   Rarity.RARE: [30, 60],  Rarity.EPIC: [55, 80]  },
+	"attack": { Rarity.COMMON: [1, 5],   Rarity.RARE: [4, 10],  Rarity.EPIC: [8, 15]  },
+	"crit_rate": { Rarity.COMMON: [0.01, 0.06],   Rarity.RARE: [0.05, 0.1],  Rarity.EPIC: [0.09, 0.15]  },
+	"auto_damage": { Rarity.COMMON: [0.1, 0.4],   Rarity.RARE: [0.3, 0.7],  Rarity.EPIC: [0.6, 1.0]  },
+	"auto_speed": { Rarity.COMMON: [0.1, 1.2],   Rarity.RARE: [1.0, 2.0],  Rarity.EPIC: [1.9, 3.5]  },
+	"proj_speed": { Rarity.COMMON: [50, 125],   Rarity.RARE: [120, 200],  Rarity.EPIC: [190, 300]  },
+	"pierce": { Rarity.COMMON: [1, 2],   Rarity.RARE: [3, 4],  Rarity.EPIC: [5, 6]  },
 }
 
 
