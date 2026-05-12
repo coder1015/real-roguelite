@@ -65,7 +65,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"slash",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bb3ub"]
@@ -82,7 +82,7 @@ rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_iggtf")
 animation = &"slash"
-frame_progress = 0.022063704
+frame_progress = 0.7711783
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1886813159]
 collision_layer = 8
