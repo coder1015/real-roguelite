@@ -58,7 +58,8 @@ func spawn_armor_drop(armor: Dictionary):
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
-	xp_dropped.connect(player.gain_xp)
+	if not xp_dropped.is_connected(player.gain_xp):
+		xp_dropped.connect(player.gain_xp)
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null

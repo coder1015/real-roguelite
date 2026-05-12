@@ -133,12 +133,14 @@ func gain_xp(amount: int) -> void:
 
 
 func level_up():
-	if xp >= xp_to_next_level and level < 7:
+	if xp >= xp_to_next_level and level <= 7:
 		level += 1
 		xp = xp - xp_to_next_level
 		xp_to_next_level = 100 * level
 		get_parent().get_node("HUD").update_level(level)
 		get_parent().get_node("HUD").update_xp(xp)
+		
+	
 
 
 func recalculate_stats(old_max_hp):
