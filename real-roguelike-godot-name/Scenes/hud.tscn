@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfvh8iffvbjc"]
 
 [ext_resource type="Script" uid="uid://bnjlx4qx0ymqv" path="res://Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="PackedScene" uid="uid://vgn85ri7u5mt" path="res://Scenes/stat_component.tscn" id="2_fccik"]
 
 [node name="HUD" type="CanvasLayer" unique_id=583667797]
 script = ExtResource("1_e0onf")
@@ -31,3 +32,7 @@ size_flags_horizontal = 4
 offset_top = 111.0
 offset_right = 40.0
 offset_bottom = 134.0
+
+[node name="StatComponent" parent="." unique_id=1914894313 instance=ExtResource("2_fccik")]
+position = Vector2(-5, -24)
+scale = Vector2(0.2, 0.2)

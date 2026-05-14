@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-# speed is in pixels per second
+
+@onready var stat_component = $"../HUD/StatComponent"
 var screen_size
-var hp: float
+var health: float = 0.0
 var invincible: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var current_weapon: BaseWeapon = null
@@ -44,11 +45,10 @@ var time_cost_reduction
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_to_group("player")
-	hp = max_hp
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	screen_size = get_viewport_rect().size
 	$Hurtbox.hit_taken.connect(_on_hurtbox_hit_taken)
-	get_parent().get_node("HUD").update_hp(hp)
+	get_parent().get_node("HUD").update_hp(health)
 	get_parent().get_node("HUD").update_xp(xp)
 	get_parent().get_node("HUD").update_level(level)
 	get_parent().get_node("HUD").update_resource(resource)
@@ -56,6 +56,9 @@ func _ready() -> void:
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
+	
+	health = max_hp
+	stat_component.update_health_bar(health, max_hp)
 	
 	match Globals.chosen_class:
 		"Sword": set_weapon($weapon_system/Melee/Sword)
@@ -131,15 +134,15 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 		return
 	#print("take_damage called with: ", damage)
 	var damage_taken = max(1.0, damage * (1.0 / (1.0 + (1.0/300.0)*defense)) - (1.0/100.0)*defense)
-	hp -= damage_taken
+	health -= damage_taken
+	stat_component.update_health_bar(health, max_hp)
 	#print("damage taken: ", damage_taken)
 	#print("hp: ", hp)
 	knockback_velocity = knockback
 	invincible = true
 	$IFrameTimer.start(0.6)
-	if hp <= 0:
+	if health <= 0:
 		die()
-	get_parent().get_node("HUD").update_hp(hp)
 
 
 func set_weapon(weapon: BaseWeapon) -> void:
@@ -192,10 +195,9 @@ func recalculate_stats(old_max_hp):
 	proj_speed = BASE_PROJ_SPEED + ArmorManager.get_stat_total("proj_speed")
 	pierce = BASE_PIERCE + ArmorManager.get_stat_total("pierce")
 	
-	hp = min(hp + (max_hp - old_max_hp), max_hp)
+	health = min(health + (max_hp - old_max_hp), max_hp)
 	#print("Auto damage: " + str(auto_damage))
-	get_parent().get_node("HUD").update_hp(hp)
-
+	get_parent().get_node("HUD/StatComponent").update_health_bar(health, max_hp)
 
 func _animate():
 	if velocity.length() > 0:

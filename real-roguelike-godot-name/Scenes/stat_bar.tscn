@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://crh0a1rl185sc"]
+
+[ext_resource type="Script" uid="uid://dfo4gx50omb8k" path="res://Scenes/stat_bar.gd" id="1_tk80w"]
+[ext_resource type="Texture2D" uid="uid://big27eg8h2u8w" path="res://Assets/art/HPbar/HPgrey.png" id="2_46piw"]
+[ext_resource type="Texture2D" uid="uid://clbbqggptp7r5" path="res://Assets/art/HPbar/HPframe.png" id="3_w0730"]
+[ext_resource type="Texture2D" uid="uid://d0r60qkd801g5" path="res://Assets/art/HPbar/HPwhite.png" id="4_m0hsx"]
+[ext_resource type="Texture2D" uid="uid://dakebfyimyqgt" path="res://Assets/art/HPbar/HPred.png" id="5_brkwj"]
+
+[node name="StatBar" type="Control" unique_id=971344237 node_paths=PackedStringArray("back_bar", "front_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_tk80w")
+back_bar = NodePath("BackBar")
+front_bar = NodePath("FrontBar")
+
+[node name="BackBar" type="TextureProgressBar" parent="." unique_id=1505983957]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+texture_under = ExtResource("2_46piw")
+texture_over = ExtResource("3_w0730")
+texture_progress = ExtResource("4_m0hsx")
+
+[node name="FrontBar" type="TextureProgressBar" parent="." unique_id=2063648339]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = ExtResource("5_brkwj")
