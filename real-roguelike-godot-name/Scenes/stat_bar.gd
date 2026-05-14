@@ -12,12 +12,12 @@ var current_pct := 1.0
 var front_tween: Tween
 var back_tween: Tween
 var pulse_tween: Tween = null
- 
-func _input(event):
-	if event is InputEventKey:
-		if event.is_pressed() and event.keycode == KEY_SPACE:
-			update_bar(back_bar.value - 10, 100)
- 
+ #
+#func _input(event):
+	#if event is InputEventKey:
+		#if event.is_pressed() and event.keycode == KEY_SPACE:
+			#update_bar(back_bar.value - 10, 100)
+ #
 func update_bar(current: float, max_value: float):
 	var pct = clamp(current / max_value, 0.0, 1.0)
  
@@ -49,6 +49,9 @@ func update_bar(current: float, max_value: float):
 		front_tween.tween_property(front_bar, "value", current, 0.25)
 		front_tween.tween_property(back_bar, "value",  current, 0.25)
 		_on_heal()
+	else:
+		front_bar.value = current
+		back_bar.value = current
  
 	current_pct = pct
  

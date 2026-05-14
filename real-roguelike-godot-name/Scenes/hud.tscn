@@ -34,5 +34,5 @@ offset_right = 40.0
 offset_bottom = 134.0
 
 [node name="StatComponent" parent="." unique_id=1914894313 instance=ExtResource("2_fccik")]
-position = Vector2(-5, -24)
-scale = Vector2(0.2, 0.2)
+position = Vector2(-10, -57)
+scale = Vector2(0.5, 0.5)

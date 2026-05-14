@@ -43,6 +43,7 @@ var time_cost_reduction
 # Lifesteal? Probably not cause would be hard to balance and not really add much to the game
 
 func _ready() -> void:
+	health = max_hp
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_to_group("player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -56,8 +57,7 @@ func _ready() -> void:
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
-	
-	health = max_hp
+
 	stat_component.update_health_bar(health, max_hp)
 	
 	match Globals.chosen_class:
@@ -132,12 +132,9 @@ func _on_hurtbox_hit_taken(damage: int, knockback: Vector2) -> void:
 func take_damage(damage: int, knockback: Vector2) -> void:
 	if invincible:
 		return
-	#print("take_damage called with: ", damage)
 	var damage_taken = max(1.0, damage * (1.0 / (1.0 + (1.0/300.0)*defense)) - (1.0/100.0)*defense)
 	health -= damage_taken
 	stat_component.update_health_bar(health, max_hp)
-	#print("damage taken: ", damage_taken)
-	#print("hp: ", hp)
 	knockback_velocity = knockback
 	invincible = true
 	$IFrameTimer.start(0.6)
