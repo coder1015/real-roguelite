@@ -13,3 +13,12 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
+
+func _on_gun_pressed() -> void:
+	Globals.chosen_class = "Gun"
+
+func _on_sword_pressed() -> void:
+	Globals.chosen_class = "Sword"
+
+func _on_e_bow_pressed() -> void:
+	Globals.chosen_class = "EBow"

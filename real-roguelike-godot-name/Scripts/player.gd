@@ -56,12 +56,12 @@ func _ready() -> void:
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
-	set_weapon($weapon_system/Melee/Sword)
 	
-	$ability_system/SwordAbilities/BigSlash.upgrade()
-	$ability_system/SwordAbilities/SlashDash.upgrade()
-	$ability_system/SwordAbilities/RazorCuts.upgrade()
-
+	match Globals.chosen_class:
+		"Sword": set_weapon($weapon_system/Melee/Sword)
+		"Gun": set_weapon($weapon_system/Ranged/Gun)
+		"EBow": set_weapon($weapon_system/Ranged/EBow)
+	
 	var width = Globals.WORLD_WIDTH * Globals.TILE_SIZE
 	var height = Globals.WORLD_HEIGHT * Globals.TILE_SIZE
 	
@@ -85,10 +85,22 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ability_1"):
 		$ability_system/SwordAbilities/BigSlash.activate()
+		#match Globals.chosen_class:
+			#"Sword": $ability_system/SwordAbilities/BigSlash.activate()
+			#"Gun": $ability_system/SwordAbilities/BigSlash.activate()
+			#"EBow": $ability_system/SwordAbilities/BigSlash.activate()
 	if Input.is_action_just_pressed("ability_2"):
 		$ability_system/SwordAbilities/SlashDash.activate()
+		#match Globals.chosen_class:
+			#"Sword": $ability_system/SwordAbilities/BigSlash.activate()
+			#"Gun": $ability_system/GunAbilities/BigSlash.activate()
+			#"EBow": $ability_system/EBowAbilities/BigSlash.activate()
 	if Input.is_action_just_pressed("ability_3"):
 		$ability_system/SwordAbilities/RazorCuts.activate()
+		#match Globals.chosen_class:
+			#"Sword": $ability_system/SwordAbilities/BigSlash.activate()
+			#"Gun": $ability_system/GunAbilities/BigSlash.activate()
+			#"EBow": $ability_system/EBowAbilities/BigSlash.activate()
 	
 	if input_velocity.length() > 0:
 		input_velocity = input_velocity.normalized() * speed
@@ -153,8 +165,20 @@ func level_up():
 		xp_to_next_level = 100 * level
 		get_parent().get_node("HUD").update_level(level)
 		get_parent().get_node("HUD").update_xp(xp)
-		
-	
+		upgrade_ability(level)
+
+func upgrade_ability(new_level: int) -> void:
+	var big_slash = $ability_system/SwordAbilities/BigSlash
+	var slash_dash = $ability_system/SwordAbilities/SlashDash
+	var razor_cuts = $ability_system/SwordAbilities/RazorCuts
+
+	match new_level:
+		2: big_slash.upgrade()       # unlock BigSlash at level 2
+		3: slash_dash.upgrade()      # unlock SlashDash at level 3
+		4: razor_cuts.upgrade()      # unlock RazorCuts at level 4
+		5: big_slash.upgrade()       # upgrade BigSlash again at level 5
+		6: slash_dash.upgrade()      # upgrade SlashDash again at level 6
+		7: razor_cuts.upgrade()      # upgrade RazorCuts again at level 7
 
 
 func recalculate_stats(old_max_hp):

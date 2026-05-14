@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cx3m08pwi3o17"]
 
-[ext_resource type="Script" uid="uid://blco3xah8s4n1" path="res://Scripts/SwordAbilities/big_slash.gd" id="1_8gr4k"]
-[ext_resource type="Script" uid="uid://xr3xevcm7wgq" path="res://Scripts/SwordAbilities/slash_dash.gd" id="2_nfwpv"]
-[ext_resource type="Script" uid="uid://ouuo2cka2h3j" path="res://Scripts/SwordAbilities/razor_cuts.gd" id="3_115fw"]
+[ext_resource type="Script" uid="uid://blco3xah8s4n1" path="res://Scripts/SwordAbilities/sword_ability1.gd" id="1_8gr4k"]
+[ext_resource type="Script" uid="uid://xr3xevcm7wgq" path="res://Scripts/SwordAbilities/sword_ability2.gd" id="2_nfwpv"]
+[ext_resource type="Script" uid="uid://ouuo2cka2h3j" path="res://Scripts/SwordAbilities/sword_ability3.gd" id="3_115fw"]
 
 [node name="ability_system" type="Node2D" unique_id=447382601]
 
@@ -31,3 +31,5 @@ spread_angle = null
 ability_name = null
 resource_cost = null
 cooldown_time = null
+
+[node name="EBowAbilities" type="Node2D" parent="." unique_id=1886906548]

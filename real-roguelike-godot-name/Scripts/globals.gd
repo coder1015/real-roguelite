@@ -5,6 +5,7 @@ const WORLD_HEIGHT = 100
 const TILE_SIZE = 32
 
 var armor_menu_open = false
+var chosen_class: String = "Sword"
 
 const BIOME_ENEMIES = {
 	Vector2i(0, 0): "res://Scenes/enemy.tscn",   # grass
