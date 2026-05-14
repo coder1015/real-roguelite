@@ -36,3 +36,7 @@ offset_bottom = 134.0
 [node name="StatComponent" parent="." unique_id=1914894313 instance=ExtResource("2_fccik")]
 position = Vector2(-10, -57)
 scale = Vector2(0.5, 0.5)
+
+[node name="BulletTimeLabel" type="Label" parent="." unique_id=850015056]
+offset_right = 40.0
+offset_bottom = 23.0

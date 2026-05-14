@@ -24,6 +24,12 @@ const BASE_AUTO_SPEED: float = 0.0
 const BASE_PROJ_SPEED: float = 0.0
 const BASE_PIERCE: int = 0
 
+# Bullet time vars
+const BULLET_TIME_MAX: float = 10.0
+var bullet_time_left: float = BULLET_TIME_MAX
+var bullet_time_active: bool = false
+var bullet_time_drained: float = 0.0
+
 # Current Stat Variables
 var max_hp: float = BASE_MAX_HP             # Flat max hp, default = 100.0
 var defense = BASE_DEFENSE                  # Gets converted into a multiplicative and additive damage reduction, default = 0
