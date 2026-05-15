@@ -12,24 +12,11 @@
 
 [node name="BigSlash" type="Node2D" parent="SwordAbilities" unique_id=770399416]
 script = ExtResource("1_8gr4k")
-ability_name = null
-resource_cost = null
-cooldown_time = null
 
 [node name="SlashDash" type="Node2D" parent="SwordAbilities" unique_id=1701012919]
 script = ExtResource("2_nfwpv")
-dash_speed = null
-dash_duration = null
-ability_name = null
-resource_cost = null
-cooldown_time = null
 
 [node name="RazorCuts" type="Node2D" parent="SwordAbilities" unique_id=23938085]
 script = ExtResource("3_115fw")
-projectile_count = null
-spread_angle = null
-ability_name = null
-resource_cost = null
-cooldown_time = null
 
 [node name="EBowAbilities" type="Node2D" parent="." unique_id=1886906548]

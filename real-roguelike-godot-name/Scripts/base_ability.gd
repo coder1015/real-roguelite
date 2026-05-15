@@ -8,7 +8,7 @@ var _cooldown: float = 0.0
 var unlocked: bool = false
 var level: int = 0
 var player: CharacterBody2D
-
+#push
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
