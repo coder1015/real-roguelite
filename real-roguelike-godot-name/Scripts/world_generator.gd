@@ -3,6 +3,7 @@ extends Node
 # Layers
 @onready var ground_layer = $"../Ground"
 @onready var decorations_layer = $"../Decorations"
+@onready var structures_layer = $"../Structures"
 @onready var obstacles_layer = $"../Obstacles"
 
 const MIN_BIOME_SIZE = 50
@@ -54,6 +55,28 @@ const OBST_ROCK = Vector2i(3, 3)
 const OBST_PALM = Vector2i(2, 4)
 const OBST_ICE  = Vector2i(0, 5)
 
+# Structures
+const STRUCTURE_COUNT = 3
+
+const STRUCTURE_CHURCH = {
+	"source_id": 2,
+	"size": Vector2i(8, 8),
+	"tiles":[
+		[null         , null         , Vector2i(2,0), Vector2i(3,0), Vector2i(4,0), Vector2i(5,0), null         , null         ],
+		[null         , null         , Vector2i(2,1), Vector2i(3,1), Vector2i(4,1), Vector2i(5,1), null         , null         ],
+		[null         , null         , Vector2i(2,2), Vector2i(3,2), Vector2i(4,2), Vector2i(5,2), null         , null         ],
+		[Vector2i(0,3), Vector2i(1,3), Vector2i(2,3), Vector2i(3,3), Vector2i(4,3), Vector2i(5,3), Vector2i(6,3), Vector2i(7,3)],
+		[Vector2i(0,4), Vector2i(1,4), Vector2i(2,4), Vector2i(3,4), Vector2i(4,4), Vector2i(5,4), Vector2i(6,4), Vector2i(7,4)],
+		[null         , null         , Vector2i(2,5), Vector2i(3,5), Vector2i(4,5), Vector2i(5,5), null         , null         ],
+		[null         , null         , Vector2i(2,6), Vector2i(3,6), Vector2i(4,6), Vector2i(5,6), null         , null         ],
+		[null         , null         , Vector2i(2,7), Vector2i(3,7), Vector2i(4,7), Vector2i(5,7), null         , null         ],
+	]
+}
+
+const BIOME_STRUCTURES = {
+	TILE_GRASS: STRUCTURE_CHURCH
+}
+
 const SOURCE_ID = 0
 
 var tile_map = {}
@@ -62,6 +85,7 @@ var tile_map = {}
 func _ready() -> void:
 	setup_noise()
 	generate_ground()
+	place_structures()
 	place_decorations()
 	place_obstacles()
 	place_borders()
@@ -120,6 +144,89 @@ func smooth_biomes():
 			if neighbors.get(dominant, 0) >= 4:
 				new_map[coord] = dominant
 	tile_map = new_map
+
+
+func place_structures():
+	for biome in BIOME_STRUCTURES:
+		var structure = BIOME_STRUCTURES[biome]
+		var placed = 0
+		var attempts = 0
+		var rows = structure.size.y
+		var cols = structure.size.x
+		
+		while placed < STRUCTURE_COUNT and attempts < STRUCTURE_COUNT * 20:
+			attempts += 1
+			
+			# Keep the random range within the map
+			var cx = randi_range(cols, Globals.WORLD_WIDTH - cols - 1)
+			var cy = randi_range(rows, Globals.WORLD_HEIGHT - rows - 1)
+			
+			if not can_place_structure(cx, cy, biome, structure):
+				continue
+			
+			create_structure(cx, cy, structure)
+			place_structure_enemies(cx, cy, structure)
+			placed += 1
+
+
+func can_place_structure(cx: int, cy: int, biome: Vector2i, structure: Dictionary) -> bool:
+	var rows = structure.size.y
+	var cols = structure.size.x
+	
+	# Check every tile the structure would occupy plus a 1 tile border around it
+	for dy in range(-1, rows + 1):
+		for dx in range(-1, cols + 1):
+			var coord = Vector2i(cx + dx, cy + dy)
+			if not tile_map.has(coord):
+				return false
+			if tile_map[coord] != biome:
+				return false
+	return true
+
+
+func create_structure(cx: int, cy: int, structure: Dictionary):
+	for dy in structure.size.y:
+		for dx in structure.size.x:
+			var cell = Vector2i(
+				cx + dx - Globals.WORLD_WIDTH / 2,
+				cy + dy - Globals.WORLD_HEIGHT / 2
+			)
+			var tile = structure.tiles[dy][dx]
+			if tile != null:
+				structures_layer.set_cell(cell, structure.source_id, tile)
+
+
+func place_structure_enemies(cx: int, cy: int, structure: Dictionary):
+	var rows = structure.size.y
+	var cols = structure.size.x
+	var center_x = cx + cols / 2
+	var center_y = cy + rows / 2
+	
+	var biome = tile_map[Vector2i(cx, cy)]
+	if not Globals.BIOME_ENEMIES.has(biome):
+		return
+	
+	var enemy_scene = load(Globals.BIOME_ENEMIES[biome])
+	
+	# Spawn enemies in a ring just outside the structure
+	for i in 6:
+		var angle = (TAU / 6) * i
+		var radius = max(rows, cols) + 2
+		var ex = int(center_x + cos(angle) * radius)
+		var ey = int(center_y + sin(angle) * radius)
+		var spawn_coord = Vector2i(ex, ey)
+		
+		if not tile_map.has(spawn_coord):
+			continue
+		if tile_map[spawn_coord] != biome:
+			continue
+		
+		var enemy = enemy_scene.instantiate()
+		enemy.position = Vector2(
+			(ex - Globals.WORLD_WIDTH / 2) * Globals.TILE_SIZE + Globals.TILE_SIZE / 2,
+			(ey - Globals.WORLD_HEIGHT / 2) * Globals.TILE_SIZE + Globals.TILE_SIZE / 2
+		)
+		get_parent().add_child.call_deferred(enemy)
 
 
 func get_neighbor_counts(x: int, y: int) -> Dictionary:
