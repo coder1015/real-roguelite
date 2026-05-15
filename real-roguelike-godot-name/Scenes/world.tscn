@@ -119,6 +119,8 @@ tile_set = SubResource("TileSet_go701")
 [node name="Decorations" type="TileMapLayer" parent="." unique_id=1274346856]
 tile_set = SubResource("TileSet_5a7ea")
 
+[node name="Structures" type="TileMapLayer" parent="." unique_id=842507122]
+
 [node name="Obstacles" type="TileMapLayer" parent="." unique_id=1392002351]
 tile_set = SubResource("TileSet_fo5ed")
 
