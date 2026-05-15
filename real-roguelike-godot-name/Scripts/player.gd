@@ -64,7 +64,7 @@ func _ready() -> void:
 	$weapon_system/Ranged/EBow.hide()
 	$weapon_system/Melee/Sword.hide()
 
-	stat_component.update_health_bar(health, max_hp)
+	stat_component.update_health_bar(health, max_hp*1.1)
 	
 	match Globals.chosen_class:
 		"Sword": set_weapon($weapon_system/Melee/Sword)
@@ -140,7 +140,7 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 		return
 	var damage_taken = max(1.0, damage * (1.0 / (1.0 + (1.0/300.0)*defense)) - (1.0/100.0)*defense)
 	health -= damage_taken
-	stat_component.update_health_bar(health, max_hp)
+	stat_component.update_health_bar(health, max_hp*1.1)
 	get_parent().get_node("HUD").update_hp(health)
 	
 	knockback_velocity = knockback

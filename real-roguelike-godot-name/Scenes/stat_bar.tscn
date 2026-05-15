@@ -16,18 +16,25 @@ script = ExtResource("1_tk80w")
 back_bar = NodePath("BackBar")
 front_bar = NodePath("FrontBar")
 
-[node name="BackBar" type="TextureProgressBar" parent="." unique_id=1505983957]
-layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 1024.0
-value = 100.0
-texture_under = ExtResource("2_46piw")
-texture_over = ExtResource("3_w0730")
-texture_progress = ExtResource("4_m0hsx")
-
-[node name="FrontBar" type="TextureProgressBar" parent="." unique_id=2063648339]
+[node name="BackBar" type="TextureProgressBar" parent="." unique_id=1428786443]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-value = 100.0
+value = 90.0
+texture_under = ExtResource("2_46piw")
+texture_progress = ExtResource("4_m0hsx")
+
+[node name="FrontBar" type="TextureProgressBar" parent="." unique_id=19802804]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+min_value = -10.0
+max_value = 110.0
+value = 10.0
 texture_progress = ExtResource("5_brkwj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1373252686]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+texture = ExtResource("3_w0730")
