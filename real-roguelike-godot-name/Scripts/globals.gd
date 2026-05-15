@@ -36,7 +36,7 @@ const RARITY_STAT_COUNT = {
 }
 
 # Drop chances
-const DROP_CHANCE = 0.25  # 25% chance to drop anything
+const DROP_CHANCE = 0.40  # 40% chance to drop anything
 const COMMON_CHANCE = 0.70  # of drops, 70% common
 const RARE_CHANCE = 0.25  # 25% rare
 const EPIC_CHANCE = 0.05  # 5% epic

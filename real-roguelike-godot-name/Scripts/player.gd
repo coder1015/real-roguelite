@@ -141,6 +141,8 @@ func take_damage(damage: int, knockback: Vector2) -> void:
 	var damage_taken = max(1.0, damage * (1.0 / (1.0 + (1.0/300.0)*defense)) - (1.0/100.0)*defense)
 	health -= damage_taken
 	stat_component.update_health_bar(health, max_hp)
+	get_parent().get_node("HUD").update_hp(health)
+	
 	knockback_velocity = knockback
 	invincible = true
 	$IFrameTimer.start(0.6)
@@ -201,6 +203,7 @@ func recalculate_stats(old_max_hp):
 	health = min(health + (max_hp - old_max_hp), max_hp)
 	#print("Auto damage: " + str(auto_damage))
 	get_parent().get_node("HUD/StatComponent").update_health_bar(health, max_hp)
+	get_parent().get_node("HUD").update_hp(health)
 
 func _animate():
 	if velocity.length() > 0:
