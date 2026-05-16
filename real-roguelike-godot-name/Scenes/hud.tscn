@@ -29,6 +29,7 @@ offset_bottom = 112.0
 size_flags_horizontal = 4
 
 [node name="PlayerResource" type="Label" parent="." unique_id=2115457823]
+visible = false
 offset_top = 111.0
 offset_right = 40.0
 offset_bottom = 134.0
@@ -37,6 +38,6 @@ offset_bottom = 134.0
 position = Vector2(-10, -57)
 scale = Vector2(0.5, 0.5)
 
-[node name="BulletTimeLabel" type="Label" parent="." unique_id=850015056]
+[node name="TimerLabel" type="Label" parent="." unique_id=850015056]
 offset_right = 40.0
 offset_bottom = 23.0

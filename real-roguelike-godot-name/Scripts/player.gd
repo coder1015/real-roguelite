@@ -10,8 +10,9 @@ var current_weapon: BaseWeapon = null
 var xp: int = 0
 var level: int = 1
 var xp_to_next_level: int = 100
-var resource: int = 100
-var max_resource: int = 100
+var resource: float = 600
+var max_resource: float = 600
+var timer_tick: float = 0.0
 
 # Base Stats
 const BASE_MAX_HP: float = 100.0
@@ -23,12 +24,6 @@ const BASE_AUTO_DAMAGE: float = 1.0
 const BASE_AUTO_SPEED: float = 0.0
 const BASE_PROJ_SPEED: float = 0.0
 const BASE_PIERCE: int = 0
-
-# Bullet time vars
-const BULLET_TIME_MAX: float = 10.0
-var bullet_time_left: float = BULLET_TIME_MAX
-var bullet_time_active: bool = false
-var bullet_time_drained: float = 0.0
 
 # Current Stat Variables
 var max_hp: float = BASE_MAX_HP             # Flat max hp, default = 100.0
@@ -49,8 +44,8 @@ var time_cost_reduction
 # Lifesteal? Probably not cause would be hard to balance and not really add much to the game
 
 func _ready() -> void:
-	health = max_hp
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	health = max_hp
 	add_to_group("player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	screen_size = get_viewport_rect().size
@@ -58,7 +53,7 @@ func _ready() -> void:
 	get_parent().get_node("HUD").update_hp(health)
 	get_parent().get_node("HUD").update_xp(xp)
 	get_parent().get_node("HUD").update_level(level)
-	get_parent().get_node("HUD").update_resource(resource)
+	#get_parent().get_node("HUD").update_resource(resource)
 	hide()
 	$weapon_system/Ranged/Gun.hide()
 	$weapon_system/Ranged/EBow.hide()
@@ -119,10 +114,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot_projectile"):
 		if current_weapon:
 			current_weapon.try_attack(get_global_mouse_position())
-
 	_animate()
 	move_and_slide()
 	knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 10 * delta)
+	timer_tick += delta
+	if timer_tick >= 1.0:
+		timer_tick -= 1.0
+		resource -= 1.0
+	resource = max(resource, 0.0)
+	get_parent().get_node("HUD").update_timer(resource)
+	if resource <= 0.0:
+		die()
 
 
 func start(pos):

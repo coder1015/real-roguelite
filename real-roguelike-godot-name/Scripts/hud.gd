@@ -28,5 +28,7 @@ func update_level(level:int) -> void:
 func update_resource(resource:int) -> void:
 	$PlayerResource.text = "Resource: " + str(resource)
 
-func update_bullet_time(time_left: float) -> void:
-	$BulletTimeLabel.text = "%.1f" % time_left
+func update_timer(seconds_left: float) -> void:
+	var minutes = int(seconds_left) / 60
+	var seconds = int(seconds_left) % 60
+	$TimerLabel.text = "%02d:%02d" % [minutes, seconds]
