@@ -13,7 +13,7 @@ var temp_noise = FastNoiseLite.new()
 var moisture_noise = FastNoiseLite.new()
 
 # Mob Spwaning
-const CLUSTER_COUNT = 160       # how many clusters across the whole map
+const CLUSTER_COUNT = 400       # how many clusters across the whole map
 const CLUSTER_RADIUS = 3       # how many tiles wide each cluster is
 const MIN_SPAWN_DIST = 5      # minimum tiles away from world center (0,0) to spawn
 
@@ -56,20 +56,29 @@ const OBST_PALM = Vector2i(2, 4)
 const OBST_ICE  = Vector2i(0, 5)
 
 # Structures
-const STRUCTURE_COUNT = 3
+const STRUCTURE_COUNT = 8
+const MIN_STRUCTURE_DIST = 100
 
 const STRUCTURE_CHURCH = {
-	"source_id": 2,
-	"size": Vector2i(8, 8),
-	"tiles":[
-		[null         , null         , Vector2i(2,0), Vector2i(3,0), Vector2i(4,0), Vector2i(5,0), null         , null         ],
-		[null         , null         , Vector2i(2,1), Vector2i(3,1), Vector2i(4,1), Vector2i(5,1), null         , null         ],
-		[null         , null         , Vector2i(2,2), Vector2i(3,2), Vector2i(4,2), Vector2i(5,2), null         , null         ],
-		[Vector2i(0,3), Vector2i(1,3), Vector2i(2,3), Vector2i(3,3), Vector2i(4,3), Vector2i(5,3), Vector2i(6,3), Vector2i(7,3)],
-		[Vector2i(0,4), Vector2i(1,4), Vector2i(2,4), Vector2i(3,4), Vector2i(4,4), Vector2i(5,4), Vector2i(6,4), Vector2i(7,4)],
-		[null         , null         , Vector2i(2,5), Vector2i(3,5), Vector2i(4,5), Vector2i(5,5), null         , null         ],
-		[null         , null         , Vector2i(2,6), Vector2i(3,6), Vector2i(4,6), Vector2i(5,6), null         , null         ],
-		[null         , null         , Vector2i(2,7), Vector2i(3,7), Vector2i(4,7), Vector2i(5,7), null         , null         ],
+	"source_id": 1,
+	"size": Vector2i(16, 16),
+	"tiles": [
+		[null         ,  null         ,  null         ,  null         ,  null         ,  Vector2i(5,0),  Vector2i(6,0),  Vector2i(7,0),  Vector2i(8,0),  Vector2i(9,0),  Vector2i(10,0), null          , null          , null          , null          , null          ],
+		[null         ,  null         ,  null         ,  null         ,  Vector2i(4,1),  Vector2i(5,1),  Vector2i(6,1),  Vector2i(7,1),  Vector2i(8,1),  Vector2i(9,1),  Vector2i(10,1), Vector2i(11,1), null          , null          , null          , null          ],
+		[null         ,  null         ,  null         ,  null         ,  Vector2i(4,2),  Vector2i(5,2),  Vector2i(6,2),  Vector2i(7,2),  Vector2i(8,2),  Vector2i(9,2),  Vector2i(10,2), Vector2i(11,2), null          , null          , null          , null          ],
+		[null         ,  null         ,  null         ,  null         ,  Vector2i(4,3),  Vector2i(5,3),  Vector2i(6,3),  Vector2i(7,3),  Vector2i(8,3),  Vector2i(9,3),  Vector2i(10,3), Vector2i(11,3), null          , null          , null          , null          ],
+		[null         ,  null         ,  null         ,  null         ,  Vector2i(4,4),  Vector2i(5,4),  Vector2i(6,4),  Vector2i(7,4),  Vector2i(8,4),  Vector2i(9,4),  Vector2i(10,4), Vector2i(11,4), null          , null          , null          , null          ],
+		[null         ,  null         ,  null         ,  null         ,  Vector2i(4,5),  Vector2i(5,5),  Vector2i(6,5),  Vector2i(7,5),  Vector2i(8,5),  Vector2i(9,5),  Vector2i(10,5), Vector2i(11,5), null          , null          , null          , null          ],
+		[Vector2i(0,6),  Vector2i(1,6),  Vector2i(2,6),  Vector2i(3,6),  Vector2i(4,6),  Vector2i(5,6),  Vector2i(6,6),  Vector2i(7,6),  Vector2i(8,6),  Vector2i(9,6),  Vector2i(10,6), Vector2i(11,6), Vector2i(12,6), Vector2i(13,6), Vector2i(14,6), Vector2i(15,6)],
+		[Vector2i(0,7),  Vector2i(1,7),  Vector2i(2,7),  Vector2i(3,7),  Vector2i(4,7),  Vector2i(5,7),  Vector2i(6,7),  Vector2i(7,7),  Vector2i(8,7),  Vector2i(9,7),  Vector2i(10,7), Vector2i(11,7), Vector2i(12,7), Vector2i(13,7), Vector2i(14,7), Vector2i(15,7)],
+		[Vector2i(0,8),  Vector2i(1,8),  Vector2i(2,8),  Vector2i(3,8),  Vector2i(4,8),  Vector2i(5,8),  Vector2i(6,8),  Vector2i(7,8),  Vector2i(8,8),  Vector2i(9,8),  Vector2i(10,8), Vector2i(11,8), Vector2i(12,8), Vector2i(13,8), Vector2i(14,8), Vector2i(15,8)],
+		[Vector2i(0,9),  Vector2i(1,9),  Vector2i(2,9),  Vector2i(3,9),  Vector2i(4,9),  Vector2i(5,9),  Vector2i(6,9),  Vector2i(7,9),  Vector2i(8,9),  Vector2i(9,9),  Vector2i(10,9), Vector2i(11,9), Vector2i(12,9), Vector2i(13,9), Vector2i(14,9), Vector2i(15,9)],
+		[null          , null          , null          , null          , Vector2i(4,10), Vector2i(5,10), Vector2i(6,10), Vector2i(7,10), Vector2i(8,10), Vector2i(9,10), Vector2i(10,10),Vector2i(11,10), null          , null          , null          , null          ],
+		[null          , null          , null          , null          , Vector2i(4,11), Vector2i(5,11), Vector2i(6,11), Vector2i(7,11), Vector2i(8,11), Vector2i(9,11), Vector2i(10,11),Vector2i(11,11), null          , null          , null          , null          ],
+		[null          , null          , null          , null          , Vector2i(4,12), Vector2i(5,12), Vector2i(6,12), Vector2i(7,12), Vector2i(8,12), Vector2i(9,12), Vector2i(10,12),Vector2i(11,12), null          , null          , null          , null          ],
+		[null          , null          , null          , null          , Vector2i(4,13), Vector2i(5,13), Vector2i(6,13), Vector2i(7,13), Vector2i(8,13), Vector2i(9,13), Vector2i(10,13),Vector2i(11,13), null          , null          , null          , null          ],
+		[null          , null          , null          , null          , Vector2i(4,14), Vector2i(5,14), Vector2i(6,14), Vector2i(7,14), Vector2i(8,14), Vector2i(9,14), Vector2i(10,14),Vector2i(11,14), null          , null          , null          , null          ],
+		[null          , null          , null          , null          , Vector2i(4,15), Vector2i(5,15), Vector2i(6,15), Vector2i(7,15), Vector2i(8,15), Vector2i(9,15), Vector2i(10,15),Vector2i(11,15), null          , null          , null          , null          ],
 	]
 }
 
@@ -96,11 +105,11 @@ func _ready() -> void:
 func setup_noise():
 	temp_noise.seed = randi()
 	temp_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
-	temp_noise.frequency = 0.02
+	temp_noise.frequency = 0.01
 
 	moisture_noise.seed = temp_noise.seed + 9999
 	moisture_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
-	moisture_noise.frequency = 0.02
+	moisture_noise.frequency = 0.01
 
 
 func get_ground_tile(t: float, m: float) -> Vector2i:
@@ -147,6 +156,8 @@ func smooth_biomes():
 
 
 func place_structures():
+	var placed_positions = []
+	
 	for biome in BIOME_STRUCTURES:
 		var structure = BIOME_STRUCTURES[biome]
 		var placed = 0
@@ -164,8 +175,18 @@ func place_structures():
 			if not can_place_structure(cx, cy, biome, structure):
 				continue
 			
+			# Check distance from all previously placed structures
+			var too_close = false
+			for pos in placed_positions:
+				if Vector2(cx, cy).distance_to(Vector2(pos.x, pos.y)) < MIN_STRUCTURE_DIST:
+					too_close = true
+					break
+				if too_close:
+					continue
+					
 			create_structure(cx, cy, structure)
 			place_structure_enemies(cx, cy, structure)
+			placed_positions.append(Vector2i(cx, cy))
 			placed += 1
 
 

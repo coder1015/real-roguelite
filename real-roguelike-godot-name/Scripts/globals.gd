@@ -1,7 +1,7 @@
 extends Node
 
-const WORLD_WIDTH = 100
-const WORLD_HEIGHT = 100
+const WORLD_WIDTH = 200
+const WORLD_HEIGHT = 200
 const TILE_SIZE = 32
 
 var armor_menu_open = false
