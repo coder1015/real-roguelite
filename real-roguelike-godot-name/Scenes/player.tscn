@@ -92,7 +92,6 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"walk"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1955031908]
-zoom = Vector2(0.03, 0.03)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1548996588]
 collision_layer = 2

@@ -10,9 +10,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var position = $Player.get_position()
-	var xpos = str(round(position.x))
-	var ypos = str(round(position.y))
-	$HUD.show_coords(xpos + ", " + ypos)
+	var xpos = round(position.x)
+	var ypos = round(position.y)
+	$HUD.show_coords(xpos, ypos)
 	$Player.level_up()
 
 

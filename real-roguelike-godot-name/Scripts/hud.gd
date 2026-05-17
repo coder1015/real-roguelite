@@ -10,8 +10,8 @@ func _process(delta: float) -> void:
 	pass
 
 
-func show_coords(text):
-	$Coords.text = text
+func show_coords(x: int, y: int):
+	$Coords.text = str(x / Globals.TILE_SIZE) + ", " + str(y / Globals.TILE_SIZE)
 	$Coords.show()
 
 

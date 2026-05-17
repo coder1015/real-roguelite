@@ -125,6 +125,7 @@ func _physics_process(delta: float) -> void:
 	get_parent().get_node("HUD").update_timer(resource)
 	if resource <= 0.0:
 		die()
+	#get_parent().get_node("HUD").show_coords(position.x, position.y)
 
 
 func start(pos):

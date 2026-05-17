@@ -2,7 +2,7 @@ extends Node
 
 const WORLD_WIDTH = 200
 const WORLD_HEIGHT = 200
-const TILE_SIZE = 32
+const TILE_SIZE = 64
 
 var armor_menu_open = false
 var chosen_class: String = "Sword"
